@@ -4,20 +4,28 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./xiaohui-mobile",
+  base: "/xiaohui-mobile/",
   plugins: [vue()],
   css: {
     postcss: {
       plugins: [
         require("postcss-pxtorem")({
           rootValue: 37.5,
+          propList: ["*"],
+          mediaQuery: true,
         }),
       ],
+    },
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import './src/style/mixin.scss';`,
+      },
     },
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "/images": "src/assets/images",
+      "/videos": "src/assets/videos",
     },
   },
   build: {
