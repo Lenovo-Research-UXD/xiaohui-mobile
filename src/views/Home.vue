@@ -2,8 +2,8 @@
 import Banner from "../components/home/Banner.vue";
 import Card from "../components/common/Card.vue";
 import OtherPages from "../components/home/OtherPages.vue";
+import Swiper from "../components/home/Swiper.vue";
 import CopyUrl from "../components/common/CopyUrl.vue";
-import { getImageUrl } from "../utils/getImageUrl";
 import { ToolCard } from "../types/index";
 const tools: Array<ToolCard> = [
   {
@@ -40,6 +40,9 @@ const otherPages = [
   },
 ];
 const copyUrlMsg = "免费试用设计工具";
+const getImageUrl = function (name: string) {
+  return new URL(`../assets/images/${name}`, import.meta.url).href;
+};
 </script>
 
 <template>
@@ -66,6 +69,9 @@ const copyUrlMsg = "免费试用设计工具";
         :link="page.link"
       ></OtherPages>
     </div>
+    <div class="swiper-wrapper">
+      <Swiper></Swiper>
+    </div>
     <div class="copyurl-wrapper">
       <CopyUrl :msg="copyUrlMsg"></CopyUrl>
     </div>
@@ -73,7 +79,6 @@ const copyUrlMsg = "免费试用设计工具";
 </template>
 
 <style lang="scss" scoped>
-@import "/style/mixin.scss";
 .home {
   width: 100vw;
   background-color: $backgroundColor;
