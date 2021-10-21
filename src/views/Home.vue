@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Banner from "../components/home/Banner.vue";
 import Card from "../components/common/Card.vue";
+import OtherPages from "../components/home/OtherPages.vue";
 import CopyUrl from "../components/common/CopyUrl.vue";
 import { getImageUrl } from "../utils/getImageUrl";
 import { ToolCard } from "../types/index";
@@ -24,6 +25,20 @@ const tools: Array<ToolCard> = [
     link: "",
   },
 ];
+const otherPages = [
+  {
+    title: "智能互动装置",
+    description: "多种AI技术支撑的互动玩法，软硬件一体的线下引流神器",
+    cover: "common/cover-device@2x.png",
+    link: "",
+  },
+  {
+    title: "API接入",
+    description: "提供丰富的API接口及文档支持，为你的产品插上创意的翅膀",
+    cover: "common/cover-api@2x.png",
+    link: "",
+  },
+];
 const copyUrlMsg = "免费试用设计工具";
 </script>
 
@@ -40,6 +55,16 @@ const copyUrlMsg = "免费试用设计工具";
         v-for="tool in tools"
         :key="tool.title"
       ></Card>
+    </div>
+    <div class="other-pages-wrapper">
+      <OtherPages
+        v-for="page in otherPages"
+        :key="page.title"
+        :title="page.title"
+        :description="page.description"
+        :cover="getImageUrl(page.cover)"
+        :link="page.link"
+      ></OtherPages>
     </div>
     <div class="copyurl-wrapper">
       <CopyUrl :msg="copyUrlMsg"></CopyUrl>

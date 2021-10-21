@@ -17,7 +17,7 @@
 import { defineComponent } from "@vue/runtime-core";
 import { ref } from "vue";
 export default defineComponent({
-  name: "Card",
+  name: "CopyUrl",
   props: {
     msg: {
       type: String,
@@ -53,7 +53,6 @@ export default defineComponent({
   .icon-web-pc {
     width: 80px;
     height: 56px;
-    object-fit: cover;
   }
 
   .content {

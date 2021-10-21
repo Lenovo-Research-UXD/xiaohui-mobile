@@ -40,7 +40,6 @@
     .icon-uxd {
       width: 100px;
       height: 40px;
-      object-fit: cover;
       margin-top: 4px;
     }
 
@@ -61,7 +60,6 @@
     .qrcode {
       width: 84px;
       height: 84px;
-      object-fit: cover;
     }
 
     .tips {

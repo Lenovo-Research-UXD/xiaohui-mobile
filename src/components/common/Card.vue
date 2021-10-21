@@ -22,11 +22,11 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      default: "hi",
+      default: "",
     },
     description: {
       type: String,
-      default: "a",
+      default: "",
     },
     cover: {
       type: String,
@@ -55,7 +55,6 @@ export default defineComponent({
   .cover {
     width: 255px;
     height: 255px;
-    object-fit: cover;
   }
 
   .content {

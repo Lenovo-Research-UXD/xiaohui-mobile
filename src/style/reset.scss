@@ -17,6 +17,10 @@ $backgroundColor: #F5F5F5;
     color: $textColor;
 }
 
+img {
+    object-fit: cover;
+}
+
 a,
 a:visited {
     text-decoration: none;
