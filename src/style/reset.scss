@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/* stylelint-enable */
+
+
+/* 全局变量 */
+
+$textColor: #222D49;
+$backgroundColor: #F5F5F5;
+
+/* 重置样式 */
+
+* {
+    outline: 0;
+    box-sizing: border-box;
+    vertical-align: baseline;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    margin: 0;
+    background: $backgroundColor;
+    font-size: 16px;
+    color: $textColor;
+    font-family: "Lato", Helvetica, Arial, "微软雅黑", "HeitiSC", sans-serif;
+    -webkit-text-size-adjust: 100% !important;
+}

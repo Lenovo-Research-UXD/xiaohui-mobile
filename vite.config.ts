@@ -24,8 +24,13 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      "@": path.resolve(__dirname, "src"),
       "/images": "src/assets/images",
       "/videos": "src/assets/videos",
+      "/components": "src/components",
+      "/style": "src/style",
+      "/types": "src/types",
+      "/utils": "src/utils",
     },
   },
   build: {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="79px" height="56px" viewBox="0 0 79 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 15</title>
+    <g id="mobile-web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-148.000000, -3711.000000)">
+            <g id="Group-15" transform="translate(148.000000, 3711.000000)">
+                <rect id="Rectangle" opacity="0.200000003" x="0" y="0" width="79" height="56"></rect>
+                <g id="Group-6" transform="translate(10.000000, 7.000000)" stroke="#4C556B" stroke-width="2">
+                    <g id="Group-4">
+                        <rect id="Rectangle" x="0" y="0" width="46" height="34"></rect>
+                        <line x1="7" y1="41.5" x2="38" y2="41.5" id="Path-7" fill="#D8D8D8"></line>
+                    </g>
+                    <g id="Group-5" transform="translate(32.000000, 10.000000)">
+                        <ellipse id="Oval" fill="#F5F5F5" cx="14.2314991" cy="13.4859521" rx="14.2314991" ry="13.4859521"></ellipse>
+                        <ellipse id="Oval" fill="#F5F5F5" cx="14.2314991" cy="13.4859521" rx="7.40037951" ry="13.4859521"></ellipse>
+                        <line x1="14.2314991" y1="1.77635684e-15" x2="14.2314991" y2="26.9719043" id="Path-8"></line>
+                        <line x1="28.89672" y1="12.9240375" x2="0.704798048" y2="12.9240375" id="Path-8"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
