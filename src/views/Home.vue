@@ -44,7 +44,7 @@ const copyUrlMsg = "免费试用设计工具";
 
 <template>
   <div class="home">
-    <!-- <Banner></Banner> -->
+    <Banner></Banner>
     <div class="placeholder"></div>
     <div class="card-wrapper">
       <Card
@@ -80,7 +80,7 @@ const copyUrlMsg = "免费试用设计工具";
 
   .placeholder {
     width: 100vw;
-    height: 381px;
+    height: 532px;
   }
   .card-wrapper {
     top: 0;
