@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Card from "../components/common/Card.vue";
-
 import Banner from "../components/home/Banner.vue";
+import Card from "../components/common/Card.vue";
+import CopyUrl from "../components/common/CopyUrl.vue";
 import { getImageUrl } from "../utils/getImageUrl";
 import { ToolCard } from "../types/index";
 const tools: Array<ToolCard> = [
@@ -24,6 +24,7 @@ const tools: Array<ToolCard> = [
     link: "",
   },
 ];
+const copyUrlMsg = "免费试用设计工具";
 </script>
 
 <template>
@@ -39,6 +40,9 @@ const tools: Array<ToolCard> = [
         v-for="tool in tools"
         :key="tool.title"
       ></Card>
+    </div>
+    <div class="copyurl-wrapper">
+      <CopyUrl :msg="copyUrlMsg"></CopyUrl>
     </div>
   </div>
 </template>
@@ -63,6 +67,12 @@ const tools: Array<ToolCard> = [
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .copyurl-wrapper {
+    width: 100vw;
+    height: 372px;
+    padding: 100px 0;
   }
 }
 </style>
