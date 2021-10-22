@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn_icon copy 3</title>
+    <g id="mobile-web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.600000024">
+        <g id="关于我们" transform="translate(-29.000000, -2679.000000)" stroke="#222D49">
+            <g id="btn_icon-copy-3" transform="translate(30.000000, 2680.000000)">
+                <ellipse id="Oval" cx="11.84" cy="11.8378378" rx="11.84" ry="11.8378378"></ellipse>
+                <path d="M12,18.3814336 C14.6666667,14.3889995 16,11.3108281 16,9.14691948 C16,6.88320411 14.209139,5.04810023 12,5.04810023 C9.790861,5.04810023 8,6.88320411 8,9.14691948 C8,11.3108281 9.33333333,14.3889995 12,18.3814336 Z" id="Oval"></path>
+                <circle id="Oval" cx="12" cy="9.04810023" r="2"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
