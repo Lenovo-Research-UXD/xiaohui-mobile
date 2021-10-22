@@ -17,6 +17,7 @@
   </div>
 
   <div class="nav-list" v-show="state.showNav">
+    <div class="placeholder"></div>
     <div class="nav" v-for="(item, index) in state.list" :key="item.name">
       <router-link :to="item.link" append>
         <div
@@ -37,7 +38,7 @@ export default defineComponent({
   name: "Header",
   setup() {
     const state = reactive({
-      showNav: true,
+      showNav: false,
       list: [
         {
           name: "主页",
@@ -87,13 +88,19 @@ export default defineComponent({
 .header {
   width: 100vw;
   height: 44px;
-  position: relative;
+  position: fixed;
+  z-index: 110;
   overflow: show;
 
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
+}
+
+.placeholder {
+  width: 100vw;
+  height: 44px;
 }
 .icon-nav {
   width: 24px;
