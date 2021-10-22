@@ -52,6 +52,8 @@ export default defineComponent({
   flex-direction: column;
   justify-content: space-between;
 
+  z-index: 10;
+
   .cover {
     width: 255px;
     height: 255px;

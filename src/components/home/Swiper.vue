@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 const artists = [
   {
     quatation: "home/icon-quatation-1@2x.png",
@@ -27,63 +28,128 @@ const artists = [
 const getImageUrl = function (name: string) {
   return new URL(`../../assets/images/${name}`, import.meta.url).href;
 };
+const activeIndex = ref(0);
 </script>
 
 <template>
-  <div class="card" v-for="artist in artists" :key="artist.name">
-    <img :src="getImageUrl(artist.quatation)" class="icon-quatation" />
-    <div class="words">{{ artist.words }}</div>
-    <div class="artist">
-      <div class="intro">{{ artist.title }}{{ artist.name }}</div>
-      <img :src="getImageUrl(artist.avatar)" alt="avatar" class="avatar" />
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="cards-wrapper">
+        <div class="card" v-for="artist in artists" :key="artist.name">
+          <img :src="getImageUrl(artist.quatation)" class="icon-quatation" />
+          <div class="words">{{ artist.words }}</div>
+          <div class="artist">
+            <div class="intro">
+              <p>{{ artist.title }}</p>
+              <p>{{ artist.name }}</p>
+            </div>
+            <img
+              :src="getImageUrl(artist.avatar)"
+              alt="avatar"
+              class="avatar"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-dots-wrapper">
+      <div class="swiper-dots">
+        <div
+          :class="['dot', activeIndex == index ? 'dot-active' : '']"
+          v-for="index in [0, 1, 2]"
+          :key="index"
+        ></div>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.card {
-  width: 315px;
-  height: 346px;
-  background: #ffffff;
-  box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.05);
-  border-radius: 6px;
-  padding: 30px 30px 55px 30px;
+.swiper-wrapper {
+  width: 1035px;
+  height: 386px;
+  padding: 0 30px;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  .icon-quatation {
-    width: 25px;
-    height: 28px;
-    align-self: flex-start;
-  }
+  align-items: flex-start;
 
-  .words {
-    width: 255px;
-    height: 140px;
-    font-size: 16px;
-    line-height: 28px;
-  }
-
-  .artist {
-    align-self: flex-end;
-    width: 220px;
-    height: 48px;
+  .cards-wrapper {
+    width: 100%;
+    height: 346px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 
-    .intro {
-      width: 153px;
-      height: 38px;
-      font-size: 14px;
-      line-height: 19px;
-      text-align: right;
+    .card {
+      width: 315px;
+      height: 346px;
+      background: #ffffff;
+      box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.05);
+      border-radius: 6px;
+      padding: 30px 30px 55px 30px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .icon-quatation {
+        width: 25px;
+        height: 28px;
+        align-self: flex-start;
+      }
+
+      .words {
+        width: 255px;
+        height: 140px;
+        font-size: 16px;
+        line-height: 28px;
+      }
+
+      .artist {
+        align-self: flex-end;
+        width: 220px;
+        height: 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .intro {
+          width: 153px;
+          height: 38px;
+          font-size: 14px;
+          line-height: 19px;
+          text-align: right;
+        }
+
+        .avatar {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+  }
+}
+.swiper-dots-wrapper {
+  width: 100vw;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+  .swiper-dots {
+    width: 62px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+
+      background: #d8d8d8;
     }
 
-    .avatar {
-      width: 48px;
-      height: 48px;
+    .dot-active {
+      background: #9a9a9a;
     }
   }
 }

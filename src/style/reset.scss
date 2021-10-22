@@ -15,6 +15,7 @@ $backgroundColor: #F5F5F5;
     box-sizing: border-box;
     vertical-align: baseline;
     color: $textColor;
+    font-family: "Lato", Helvetica, Arial, "微软雅黑", "HeitiSC", sans-serif;
 }
 
 img {
@@ -31,6 +32,5 @@ body {
     margin: 0;
     background: $backgroundColor;
     font-size: 16px;
-    font-family: "Lato", Helvetica, Arial, "微软雅黑", "HeitiSC", sans-serif;
     -webkit-text-size-adjust: 100% !important;
 }
