@@ -1,53 +1,83 @@
-<script setup lang="ts">
+<script lang="ts">
 import Video from "../common/Video.vue";
 import CopyUrl from "../../components/common/CopyUrl.vue";
 import Card from "../common/Card.vue";
 
 import { ToolLayout, ToolCard } from "../../types/index";
+import { defineComponent, onMounted, PropType, reactive } from "vue";
 
-import { defineProps, PropType } from "vue";
-const props = defineProps({
-  tool: Object as PropType<ToolLayout>,
+export default defineComponent({
+  name: "Layout",
+  components: {
+    Video: Video,
+    CopyUrl: CopyUrl,
+    Card: Card,
+  },
+  props: {
+    tool: {
+      type: Object as PropType<ToolLayout>,
+      default: null,
+    },
+  },
+  setup(props) {
+    const tools: Array<ToolCard> = [
+      {
+        title: "流体动画工具",
+        description: "前所未见的流体动态素材，自由连接，一气呵成",
+        cover: "common/cover-animation@2x.png",
+        link: "/tool-animation",
+      },
+      {
+        title: "创意脑图工具",
+        description: "突破传统的创意拓展工具，智能编辑，随心所欲",
+        cover: "common/cover-mindmap@2x.png",
+        link: "/tool-mindmap",
+      },
+      {
+        title: "智绘水墨工具",
+        description: "大师级的水墨创意设计，高清细节，随心而韵",
+        cover: "common/cover-iink@2x.png",
+        link: "/tool-iink",
+      },
+    ];
+
+    const state = reactive({
+      tool: props.tool,
+      copyUrlMsg: "免费下载壁纸",
+      otherTools: tools,
+    });
+
+    const getImageUrl = (name: string) => {
+      return new URL(`../../assets/images/${name}`, import.meta.url).href;
+    };
+
+    /**
+     * 其余工具信息 - 通过比对所有tools的title是否与props中传入的当前tool.title一致
+     * @return otherTools
+     */
+    const otherTools = () => {
+      state.otherTools = tools.filter((cur) => {
+        return cur.title != props.tool.title;
+      }) as Array<ToolCard>;
+    };
+
+    onMounted(() => {
+      otherTools();
+    });
+
+    return {
+      state,
+      getImageUrl,
+    };
+  },
 });
-const copyUrlMsg = "免费下载壁纸";
-const getImageUrl = function (name: string) {
-  return new URL(`../../assets/images/${name}`, import.meta.url).href;
-};
-const tools: Array<ToolCard> = [
-  {
-    title: "流体动画工具",
-    description: "前所未见的流体动态素材，自由连接，一气合成",
-    cover: "common/cover-animation@2x.png",
-    link: "",
-  },
-  {
-    title: "创意脑图工具",
-    description: "突破传统的创意拓展工具，智能编辑，随心所欲",
-    cover: "common/cover-mindmap@2x.png",
-    link: "",
-  },
-  {
-    title: "智绘水墨工具",
-    description: "大师级的水墨创意设计，高清细节，随心而韵",
-    cover: "common/cover-iink@2x.png",
-    link: "",
-  },
-];
-
-/**
- * 其余工具信息 - 通过比对所有tools的title是否与props中传入的当前tool.title一致
- * @return otherTools
- */
-const otherTools = tools.filter((cur) => {
-  return cur.title != props.tool.title;
-}) as Array<ToolCard>;
 </script>
 
 <template>
   <div class="layout">
     <!-- 顶部视频 -->
     <div class="banner-wrapper">
-      <Video :video="tool.video" :cover="tool.cover"></Video>
+      <Video :video="state.tool.video" :cover="state.tool.cover"></Video>
     </div>
     <!-- 链接入口 -->
     <div class="link-wrapper">
@@ -57,23 +87,25 @@ const otherTools = tools.filter((cur) => {
         class="icon-xiaohui"
       />
       <div class="title">
-        <pre>{{ tool.title }}</pre>
+        <pre>{{ state.tool.title }}</pre>
       </div>
       <div class="description">
-        <pre>{{ tool.description }}</pre>
+        <pre>{{ state.tool.description }}</pre>
       </div>
-      <router-link to="/" append>
+      <router-link :to="state.tool.link" append>
         <div class="btn-more">免费试用</div>
       </router-link>
     </div>
     <!-- 三组介绍图文 -->
     <div
       class="details-wrapper"
-      :style="{ height: tool.title == '创意脑图工具' ? '1405px' : '1353px' }"
+      :style="{
+        height: state.tool.title == '创意脑图工具' ? '1405px' : '1353px',
+      }"
     >
       <div
         class="detail-wrapper"
-        v-for="item in tool.details"
+        v-for="item in state.tool.details"
         :key="item.title"
       >
         <img :src="getImageUrl(item.cover)" alt="tool-detail" />
@@ -89,12 +121,12 @@ const otherTools = tools.filter((cur) => {
     <div class="demo-wrapper"></div>
     <!-- 复制链接 -->
     <div class="copyurl-wrapper">
-      <CopyUrl :msg="copyUrlMsg"></CopyUrl>
+      <CopyUrl :msg="state.copyUrlMsg"></CopyUrl>
     </div>
     <!-- 其它工具卡片 -->
     <div class="card-wrapper">
       <Card
-        v-for="tool in otherTools"
+        v-for="tool in state.otherTools"
         :title="tool.title"
         :description="tool.description"
         :link="tool.link"

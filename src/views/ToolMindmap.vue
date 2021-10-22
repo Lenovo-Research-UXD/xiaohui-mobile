@@ -6,6 +6,7 @@ const tool: ToolLayout = {
   cover: "tool/mindmap-cover@2x.png",
   title: "创意脑图工具",
   description: "突破传统的创意拓展工具，\n智能编辑，随心所欲",
+  link: "/tool-mindmap",
   details: [
     {
       cover: "tool/mindmap-detail-1@2x.png",

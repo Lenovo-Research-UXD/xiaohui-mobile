@@ -5,7 +5,7 @@
       <div class="title">{{ title }}</div>
       <div class="description">{{ description }}</div>
     </div>
-    <router-link to="/" append>
+    <router-link :to="link" append>
       <div class="btn-more">了解更多</div>
     </router-link>
   </div>
@@ -30,7 +30,7 @@ export default defineComponent({
     },
     link: {
       type: String,
-      default: "",
+      default: "/",
     },
   },
 });

@@ -8,21 +8,21 @@ import { ToolCard } from "../types/index";
 const tools: Array<ToolCard> = [
   {
     title: "流体动画工具",
-    description: "前所未见的流体动态素材，自由连接，一气合成",
+    description: "前所未见的流体动态素材，自由连接，一气呵成",
     cover: "common/cover-animation@2x.png",
-    link: "",
+    link: "/tool-animation",
   },
   {
     title: "创意脑图工具",
     description: "突破传统的创意拓展工具，智能编辑，随心所欲",
     cover: "common/cover-mindmap@2x.png",
-    link: "",
+    link: "/tool-mindmap",
   },
   {
     title: "智绘水墨工具",
     description: "大师级的水墨创意设计，高清细节，随心而韵",
     cover: "common/cover-iink@2x.png",
-    link: "",
+    link: "/tool-iink",
   },
 ];
 const otherPages = [
@@ -30,13 +30,13 @@ const otherPages = [
     title: "智能互动装置",
     description: "多种AI技术支撑的互动玩法，软硬件一体的线下引流神器",
     cover: "common/cover-device@2x.png",
-    link: "",
+    link: "/device",
   },
   {
     title: "API接入",
     description: "提供丰富的API接口及文档支持，为你的产品插上创意的翅膀",
     cover: "common/cover-api@2x.png",
-    link: "",
+    link: "/api",
   },
 ];
 const copyUrlMsg = "免费试用设计工具";

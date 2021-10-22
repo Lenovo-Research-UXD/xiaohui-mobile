@@ -5,7 +5,8 @@ const tool: ToolLayout = {
   video: "animation.mp4",
   cover: "tool/animation-cover@2x.png",
   title: "流体动画工具",
-  description: "前所未见的流体动态素材，自由连接，一气呵成",
+  description: "前所未见的流体动态素材，\n自由连接，一气呵成",
+  link: "/tool-animation",
   details: [
     {
       cover: "tool/animation-detail-1@2x.png",

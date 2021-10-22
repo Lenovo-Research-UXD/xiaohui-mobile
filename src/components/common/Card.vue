@@ -6,7 +6,7 @@
       <div class="description">{{ description }}</div>
     </div>
 
-    <router-link to="/" append>
+    <router-link :to="link" append>
       <div class="more">
         了解详情
         <img src="/images/common/icon-right.svg" alt="more" class="icon-more" />
@@ -34,7 +34,7 @@ export default defineComponent({
     },
     link: {
       type: String,
-      default: "",
+      default: "/",
     },
   },
 });

@@ -6,6 +6,7 @@ const tool: ToolLayout = {
   cover: "tool/iink-cover@2x.png",
   title: "智绘水墨工具",
   description: "大师级的水墨创意设计，高\n清细节，随心而韵",
+  link: "/tool-iink",
   details: [
     {
       cover: "tool/iink-detail-1@2x.png",
