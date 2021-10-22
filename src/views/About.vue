@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Banner from "../components/about/Banner.vue";
+import History from "../components/about/History.vue";
 import CopyUrl from "../components/common/CopyUrl.vue";
 const copyUrlMsg = "了解更多资讯";
 </script>
@@ -8,6 +9,9 @@ const copyUrlMsg = "了解更多资讯";
   <div class="about">
     <div class="banner-wrapper">
       <Banner></Banner>
+    </div>
+    <div class="history-wrapper">
+      <History></History>
     </div>
     <div class="copyurl-wrapper">
       <CopyUrl :msg="copyUrlMsg"></CopyUrl>
@@ -24,6 +28,12 @@ const copyUrlMsg = "了解更多资讯";
     width: 100vw;
     height: 580px;
     padding-bottom: 48px;
+  }
+
+  .history-wrapper {
+    width: 100vw;
+    height: 1830px;
+    padding: 0 48px 100px 30px;
   }
   .copyurl-wrapper {
     width: 100vw;
