@@ -1,9 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import Tool from "../views/Tool.vue";
-import Device from "../views/Device.vue";
-import Api from "../views/Api.vue";
-import About from "../views/About.vue";
 
 const routes = [
   {
@@ -13,9 +9,19 @@ const routes = [
     component: Home,
   },
   {
-    path: "/tool",
+    path: "/tool-animation",
+    name: "tool-animation",
+    component: () => import("../views/ToolAnimation.vue"),
+  },
+  {
+    path: "/tool-mindmap",
+    name: "tool-mindmap",
+    component: () => import("../views/ToolMindmap.vue"),
+  },
+  {
+    path: "/tool-iink",
     name: "tool",
-    component: Tool,
+    component: () => import("../views/ToolIink.vue"),
   },
   {
     path: "/device",

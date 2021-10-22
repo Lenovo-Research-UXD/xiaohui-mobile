@@ -112,10 +112,10 @@ export default defineComponent({
   }
 
   .btn-play {
-    width: 71px;
-    height: 71px;
-    position: absolute;
-    opacity: 0.6;
+    width: 89px;
+    height: 89px;
+    /* position: absolute; */
+    opacity: 0.8;
     transition: all 0.2s ease-in-out;
 
     &:hover,

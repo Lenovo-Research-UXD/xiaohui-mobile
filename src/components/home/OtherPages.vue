@@ -70,22 +70,5 @@ export default defineComponent({
       @include description;
     }
   }
-
-  .btn-more {
-    width: 140px;
-    height: 48px;
-    background: #4c68ff;
-    box-shadow: 0px 5px 20px 0px rgba(49, 152, 255, 0.35);
-    border-radius: 6px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: white;
-
-    font-size: 16px;
-    line-height: 16px;
-  }
 }
 </style>
