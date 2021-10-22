@@ -80,7 +80,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .historys-wrapper {
   width: 296px;
-  height: 1752px;
+  height: 1712px;
 
   display: flex;
   flex-direction: column;
