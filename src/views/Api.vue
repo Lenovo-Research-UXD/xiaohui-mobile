@@ -7,6 +7,7 @@ const copyUrlMsg = "免费调用API";
   <div class="api">
     <div class="banner-wrapper">
       <img src="/images/api/banner@2x.png" alt="banner" class="banner" />
+      <div class="title">一键连接艺术&技术</div>
     </div>
     <div class="api-wrapper">
       <Api></Api>
@@ -21,9 +22,23 @@ const copyUrlMsg = "免费调用API";
 .api {
   width: 100vw;
   background-color: $backgroundColor;
-  .banner {
+  .banner-wrapper {
     width: 375px;
     height: 160px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .banner {
+      position: absolute;
+      width: 375px;
+      height: 160px;
+    }
+    .title {
+      @include title;
+      color: white;
+      z-index: 10;
+    }
   }
 
   .api-wrapper {
