@@ -71,7 +71,7 @@ const getImageUrl = function (name: string) {
     }
 
     .cover {
-      width: 275px;
+      widtåh: 275px;
       height: 275px;
     }
   }
