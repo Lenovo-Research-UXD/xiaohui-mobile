@@ -4,7 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/xiaohui-mobile/",
+  base: "/mobile/",
   plugins: [vue()],
   css: {
     postcss: {
@@ -34,7 +34,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "./xiaohui-mobile",
+    outDir: "./mobile",
     minify: "terser", //混淆器, terser后文件体积更小
   },
   server: {
