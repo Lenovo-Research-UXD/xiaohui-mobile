@@ -1,10 +1,6 @@
 <template>
   <div class="wrapper">
-    <img
-      src="/images/common/icon-web-pc.svg"
-      alt="web-pc"
-      class="icon-web-pc"
-    />
+    <img src="/images/common/icon-web-pc.svg" alt="web-pc" class="icon-web-pc" />
     <div class="content">
       <p>{{ msg }}，请在电脑端访问</p>
       <p>xiaohui.ai</p>
@@ -14,25 +10,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/runtime-core";
-import { ref } from "vue";
+import { defineComponent } from '@vue/runtime-core';
+import { ref } from 'vue';
 export default defineComponent({
-  name: "CopyUrl",
+  name: 'CopyUrl',
   props: {
     msg: {
       type: String,
-      default: "免费试用设计工具",
+      default: '免费试用设计工具',
     },
   },
   setup() {
     const copyUrl = async function () {
       const clipboardObj = navigator.clipboard;
-      const url = "xiaohui.ai";
+      const url = 'xiaohui.ai';
       if (clipboardObj) {
         await clipboardObj.writeText(url);
-        alert("链接已复制");
+        alert('链接已复制');
       } else {
-        alert("该浏览器不支持剪切板操作");
+        alert('该浏览器不支持剪切板操作');
       }
     };
     return {
@@ -44,7 +40,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .wrapper {
-  width: 100vw;
+  width: 375px;
   height: 165px;
   display: flex;
   flex-direction: column;
@@ -56,13 +52,13 @@ export default defineComponent({
   }
 
   .content {
-    width: 100%;
+    width: 375px;
     height: 73px;
     padding: 12px 0 19px 0;
     opacity: 0.8;
 
     p {
-      width: 100%;
+      width: 375px;
       font-size: 16px;
       font-weight: bold;
       line-height: 21px;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Header from "./components/common/Header.vue";
-import Footer from "./components/common/Footer.vue";
+import Header from './components/common/Header.vue';
+import Footer from './components/common/Footer.vue';
 </script>
 
 <template>
@@ -14,7 +14,7 @@ import Footer from "./components/common/Footer.vue";
 
 <style scoped>
 .placeholder {
-  width: 100vw;
+  width: 375px;
   height: 44px;
 }
 </style>

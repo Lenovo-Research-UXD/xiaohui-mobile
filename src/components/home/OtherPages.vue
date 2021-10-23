@@ -12,25 +12,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/runtime-core";
+import { defineComponent } from '@vue/runtime-core';
 export default defineComponent({
-  name: "OtherPages",
+  name: 'OtherPages',
   props: {
     title: {
       type: String,
-      default: "",
+      default: '',
     },
     description: {
       type: String,
-      default: "a",
+      default: 'a',
     },
     cover: {
       type: String,
-      default: "",
+      default: '',
     },
     link: {
       type: String,
-      default: "/",
+      default: '/',
     },
   },
 });
@@ -38,7 +38,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .other-pages {
-  width: 100vw;
+  width: 375px;
   height: 525px;
 
   display: flex;
@@ -52,7 +52,7 @@ export default defineComponent({
   }
 
   .content {
-    width: 100%;
+    width: 375px;
     height: 80px;
     display: flex;
     flex-direction: column;

@@ -1,13 +1,13 @@
 <script lang="ts">
-import Video from "../common/Video.vue";
-import CopyUrl from "../../components/common/CopyUrl.vue";
-import Card from "../common/Card.vue";
+import Video from '../common/Video.vue';
+import CopyUrl from '../../components/common/CopyUrl.vue';
+import Card from '../common/Card.vue';
 
-import { ToolLayout, ToolCard } from "../../types/index";
-import { defineComponent, onMounted, PropType, reactive } from "vue";
+import { ToolLayout, ToolCard } from '../../types/index';
+import { defineComponent, onMounted, PropType, reactive } from 'vue';
 
 export default defineComponent({
-  name: "Layout",
+  name: 'Layout',
   components: {
     Video: Video,
     CopyUrl: CopyUrl,
@@ -22,28 +22,28 @@ export default defineComponent({
   setup(props) {
     const tools: Array<ToolCard> = [
       {
-        title: "流体动画工具",
-        description: "前所未见的流体动态素材，自由连接，一气呵成",
-        cover: "common/cover-animation@2x.png",
-        link: "/tool-animation",
+        title: '流体动画工具',
+        description: '前所未见的流体动态素材，自由连接，一气呵成',
+        cover: 'common/cover-animation@2x.png',
+        link: '/tool-animation',
       },
       {
-        title: "创意脑图工具",
-        description: "突破传统的创意拓展工具，智能编辑，随心所欲",
-        cover: "common/cover-mindmap@2x.png",
-        link: "/tool-mindmap",
+        title: '创意脑图工具',
+        description: '突破传统的创意拓展工具，智能编辑，随心所欲',
+        cover: 'common/cover-mindmap@2x.png',
+        link: '/tool-mindmap',
       },
       {
-        title: "智绘水墨工具",
-        description: "大师级的水墨创意设计，高清细节，随心而韵",
-        cover: "common/cover-iink@2x.png",
-        link: "/tool-iink",
+        title: '智绘水墨工具',
+        description: '大师级的水墨创意设计，高清细节，随心而韵',
+        cover: 'common/cover-iink@2x.png',
+        link: '/tool-iink',
       },
     ];
 
     const state = reactive({
       tool: props.tool,
-      copyUrlMsg: "免费下载壁纸",
+      copyUrlMsg: '免费下载壁纸',
       otherTools: tools,
     });
 
@@ -56,7 +56,7 @@ export default defineComponent({
      * @return otherTools
      */
     const otherTools = () => {
-      state.otherTools = tools.filter((cur) => {
+      state.otherTools = tools.filter(cur => {
         return cur.title != props.tool.title;
       }) as Array<ToolCard>;
     };
@@ -81,11 +81,7 @@ export default defineComponent({
     </div>
     <!-- 链接入口 -->
     <div class="link-wrapper">
-      <img
-        src="/images/common/icon-xiaohui-grey.svg"
-        alt="xiaohui"
-        class="icon-xiaohui"
-      />
+      <img src="/images/common/icon-xiaohui-grey.svg" alt="xiaohui" class="icon-xiaohui" />
       <div class="title">
         <pre>{{ state.tool.title }}</pre>
       </div>
@@ -103,11 +99,7 @@ export default defineComponent({
         height: state.tool.title == '创意脑图工具' ? '1405px' : '1353px',
       }"
     >
-      <div
-        class="detail-wrapper"
-        v-for="item in state.tool.details"
-        :key="item.title"
-      >
+      <div class="detail-wrapper" v-for="item in state.tool.details" :key="item.title">
         <img :src="getImageUrl(item.cover)" alt="tool-detail" />
         <div class="title">
           <pre>{{ item.title }}</pre>
@@ -139,7 +131,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .layout {
-  width: 100vw;
+  width: 375px;
   background: $backgroundColor;
 
   .banner-wrapper {
@@ -148,7 +140,7 @@ export default defineComponent({
   }
 
   .link-wrapper {
-    width: 100vw;
+    width: 375px;
     height: 230px;
 
     display: flex;
@@ -180,14 +172,14 @@ export default defineComponent({
   }
 
   .details-wrapper {
-    width: 100vw;
+    width: 375px;
     height: 1353px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     .detail-wrapper {
-      width: 100vw;
+      width: 375px;
       padding: 50px 50px 70px 50px;
       background: #eaedf4;
       display: flex;
@@ -216,13 +208,13 @@ export default defineComponent({
   }
 
   .copyurl-wrapper {
-    width: 100vw;
+    width: 375px;
     height: 372px;
     padding: 100px 0;
   }
 
   .card-wrapper {
-    width: 100vw;
+    width: 375px;
     height: 1040px;
     padding-bottom: 100px;
     display: flex;

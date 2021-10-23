@@ -4,13 +4,7 @@
       @component video 
       @state 显示控件
     -->
-    <video
-      :poster="getImageUrl(cover)"
-      controls
-      v-show="state.showControls"
-      @ended="completeVideo()"
-      ref="videoDom"
-    >
+    <video :poster="getImageUrl(cover)" controls v-show="state.showControls" @ended="completeVideo()" ref="videoDom">
       <source :src="getVideoUrl(video)" type="video/mp4" />
     </video>
 
@@ -29,17 +23,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, computed } from "vue";
+import { defineComponent, reactive, ref, computed } from 'vue';
 export default defineComponent({
-  name: "Video",
+  name: 'Video',
   props: {
     video: {
       type: String,
-      default: "",
+      default: '',
     },
     cover: {
       type: String,
-      default: "",
+      default: '',
     },
   },
   setup(props) {
@@ -104,7 +98,7 @@ export default defineComponent({
   align-items: center;
 
   video {
-    width: 100%;
+    width: 375px;
     height: 100%;
     position: absolute;
     box-sizing: border-box;

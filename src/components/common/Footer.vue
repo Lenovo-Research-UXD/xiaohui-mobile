@@ -9,11 +9,7 @@
       </div>
     </div>
     <div class="right-wrapper">
-      <img
-        src="/images/common/image-qrcode@2x.png"
-        alt="qrcode"
-        class="qrcode"
-      />
+      <img src="/images/common/image-qrcode@2x.png" alt="qrcode" class="qrcode" />
       <div class="tips">
         <p>扫码关注公众号</p>
         <p>了解更多资讯</p>
@@ -24,7 +20,7 @@
 
 <style lang="scss" scoped>
 .footer {
-  width: 100vw;
+  width: 375px;
   height: 216px;
   padding: 41px 30px 52px 30px;
   border-top: 1px solid rgba(73, 73, 73, 0.1);

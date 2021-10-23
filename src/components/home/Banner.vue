@@ -18,7 +18,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .banner {
-  width: 100vw;
+  width: 375px;
   height: 800px;
   position: absolute;
 
@@ -27,7 +27,7 @@ export default defineComponent({
   align-items: center;
 
   video {
-    width: 100vw;
+    width: 375px;
     position: absolute;
   }
 
@@ -64,7 +64,7 @@ export default defineComponent({
   }
 
   .mask {
-    width: 100%;
+    width: 375px;
     height: 289px;
     position: absolute;
     bottom: 0;

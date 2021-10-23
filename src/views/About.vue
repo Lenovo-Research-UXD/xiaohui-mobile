@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Banner from "../components/about/Banner.vue";
-import History from "../components/about/History.vue";
-import Contact from "../components/about/Contact.vue";
-import CopyUrl from "../components/common/CopyUrl.vue";
-const copyUrlMsg = "了解更多资讯";
+import Banner from '../components/about/Banner.vue';
+import History from '../components/about/History.vue';
+import Contact from '../components/about/Contact.vue';
+import CopyUrl from '../components/common/CopyUrl.vue';
+const copyUrlMsg = '了解更多资讯';
 </script>
 
 <template>
@@ -25,28 +25,28 @@ const copyUrlMsg = "了解更多资讯";
 
 <style lang="scss" scoped>
 .about {
-  width: 100vw;
+  width: 375px;
   background-color: $backgroundColor;
 
   .banner-wrapper {
-    width: 100vw;
+    width: 375px;
     height: 580px;
     padding-bottom: 48px;
   }
 
   .history-wrapper {
-    width: 100vw;
+    width: 375px;
     height: 1830px;
     padding: 0 48px 100px 30px;
   }
 
   .contact-wrapper {
-    width: 100vw;
+    width: 375px;
     height: 160px;
     padding: 0 30px;
   }
   .copyurl-wrapper {
-    width: 100vw;
+    width: 375px;
     height: 372px;
     padding: 100px 0;
   }

@@ -16,6 +16,16 @@ $backgroundColor: #F5F5F5;
     vertical-align: baseline;
     color: $textColor;
     font-family: "Lato", Helvetica, Arial, "微软雅黑", "HeitiSC", sans-serif;
+    /** hide the scrollbar | safari */
+    &::-webkit-scrollbar {
+        width: 0 ！important;
+    }
+    /** hide the scrollbar | firefox */
+    -ms-overflow-style: none;
+}
+
+-webkit-scrollbar {
+    width: 0 ！important;
 }
 
 img {

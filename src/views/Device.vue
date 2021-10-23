@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Device from "../components/device/Device.vue";
-import CopyUrl from "../components/common/CopyUrl.vue";
-const copyUrlMsg = "免费试用装置";
+import Device from '../components/device/Device.vue';
+import CopyUrl from '../components/common/CopyUrl.vue';
+const copyUrlMsg = '免费试用装置';
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const copyUrlMsg = "免费试用装置";
 
 <style lang="scss" scoped>
 .device {
-  width: 100vw;
+  width: 375px;
   background-color: $backgroundColor;
 
   .banner-wrapper {
@@ -39,7 +39,7 @@ const copyUrlMsg = "免费试用装置";
   }
 
   .device-wrapper {
-    width: 100vw;
+    width: 375px;
     height: 1695px;
     padding-top: 100px;
 
@@ -48,7 +48,7 @@ const copyUrlMsg = "免费试用装置";
     align-items: center;
   }
   .copyurl-wrapper {
-    width: 100vw;
+    width: 375px;
     height: 372px;
     padding: 100px 0;
   }

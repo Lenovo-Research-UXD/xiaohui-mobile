@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Api from "../components/api/Api.vue";
-import CopyUrl from "../components/common/CopyUrl.vue";
-const copyUrlMsg = "免费调用API";
+import Api from '../components/api/Api.vue';
+import CopyUrl from '../components/common/CopyUrl.vue';
+const copyUrlMsg = '免费调用API';
 </script>
 <template>
   <div class="api">
@@ -20,7 +20,7 @@ const copyUrlMsg = "免费调用API";
 
 <style lang="scss" scoped>
 .api {
-  width: 100vw;
+  width: 375px;
   background-color: $backgroundColor;
   .banner-wrapper {
     width: 375px;
@@ -42,7 +42,7 @@ const copyUrlMsg = "免费调用API";
   }
 
   .api-wrapper {
-    width: 100vw;
+    width: 375px;
     height: 1862px;
     padding-top: 40px;
     display: flex;
@@ -50,7 +50,7 @@ const copyUrlMsg = "免费调用API";
     align-items: center;
   }
   .copyurl-wrapper {
-    width: 100vw;
+    width: 375px;
     height: 372px;
     padding: 100px 0;
   }

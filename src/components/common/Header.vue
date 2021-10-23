@@ -1,17 +1,8 @@
 <template>
   <div class="header">
-    <img
-      class="icon-nav"
-      src="/images/common/icon-nav@2x.png"
-      alt="nav"
-      @click="state.showNav = !state.showNav"
-    />
+    <img class="icon-nav" src="/images/common/icon-nav@2x.png" alt="nav" @click="state.showNav = !state.showNav" />
     <div class="icon-xiaohui-wrapper">
-      <img
-        class="icon-xiaohui"
-        src="/images/common/icon-xiaohui@2x.png"
-        alt="xiaohui"
-      />
+      <img class="icon-xiaohui" src="/images/common/icon-xiaohui@2x.png" alt="xiaohui" />
       <img src="/images/common/icon-beta.svg" alt="beta" class="icon-beta" />
     </div>
   </div>
@@ -20,10 +11,7 @@
     <div class="placeholder"></div>
     <div class="nav" v-for="(item, index) in state.list" :key="item.name">
       <router-link :to="item.link" append>
-        <div
-          :class="['nav-name', index == state.activeIndex ? 'nav-active' : '']"
-          @click="clickNav(index)"
-        >
+        <div :class="['nav-name', index == state.activeIndex ? 'nav-active' : '']" @click="clickNav(index)">
           {{ item.name }}
         </div>
       </router-link>
@@ -32,41 +20,41 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/runtime-core";
-import { reactive } from "vue";
+import { defineComponent } from '@vue/runtime-core';
+import { reactive } from 'vue';
 export default defineComponent({
-  name: "Header",
+  name: 'Header',
   setup() {
     const state = reactive({
       showNav: false,
       list: [
         {
-          name: "主页",
-          link: "/",
+          name: '主页',
+          link: '/',
         },
         {
-          name: "流体动画工具",
-          link: "/tool-animation",
+          name: '流体动画工具',
+          link: '/tool-animation',
         },
         {
-          name: "创意脑图工具",
-          link: "/tool-mindmap",
+          name: '创意脑图工具',
+          link: '/tool-mindmap',
         },
         {
-          name: "智慧水墨工具",
-          link: "/tool-iink",
+          name: '智慧水墨工具',
+          link: '/tool-iink',
         },
         {
-          name: "智能互动装置",
-          link: "/device",
+          name: '智能互动装置',
+          link: '/device',
         },
         {
-          name: "API接入",
-          link: "/api",
+          name: 'API接入',
+          link: '/api',
         },
         {
-          name: "关于我们",
-          link: "/about",
+          name: '关于我们',
+          link: '/about',
         },
       ],
       activeIndex: 0,
@@ -86,7 +74,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .header {
-  width: 100vw;
+  width: 375px;
   height: 44px;
   position: fixed;
   z-index: 110;
@@ -99,7 +87,7 @@ export default defineComponent({
 }
 
 .placeholder {
-  width: 100vw;
+  width: 375px;
   height: 44px;
 }
 .icon-nav {
@@ -135,14 +123,14 @@ export default defineComponent({
   /* opacity: 0.8; */
   z-index: 100;
   position: absolute;
-  width: 100vw;
+  width: 375px;
   height: 100vh;
   background-color: #ffffff;
 
   border-top: 1px solid rgba(68, 69, 83, 0.05);
 
   .nav {
-    width: 100vw;
+    width: 375px;
     height: 58px;
     border-bottom: 1px solid rgba(68, 69, 83, 0.05);
     padding: 20px 30px;

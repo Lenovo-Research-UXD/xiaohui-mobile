@@ -38,7 +38,7 @@
     flex-direction: column;
     justify-content: space-between;
     .list {
-      width: 100%;
+      width: 315px;
       height: 26px;
       display: flex;
       justify-content: space-between;

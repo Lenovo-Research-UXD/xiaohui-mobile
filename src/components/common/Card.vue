@@ -16,25 +16,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/runtime-core";
+import { defineComponent } from '@vue/runtime-core';
 export default defineComponent({
-  name: "Card",
+  name: 'Card',
   props: {
     title: {
       type: String,
-      default: "",
+      default: '',
     },
     description: {
       type: String,
-      default: "",
+      default: '',
     },
     cover: {
       type: String,
-      default: "",
+      default: '',
     },
     link: {
       type: String,
-      default: "/",
+      default: '/',
     },
   },
 });
