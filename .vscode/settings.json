@@ -1,3 +1,10 @@
 {
-    "cSpell.words": ["vite"]
+    "cSpell.words": ["vite"],
+    "[json{c}]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace",
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
 }
