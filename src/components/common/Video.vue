@@ -116,6 +116,11 @@ export default defineComponent({
     &:active {
       opacity: 1;
     }
+
+    img {
+      width: 89px;
+      height: 89px;
+    }
   }
 }
 </style>

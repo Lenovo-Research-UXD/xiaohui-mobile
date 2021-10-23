@@ -78,7 +78,7 @@ export default defineComponent({
   height: 44px;
   position: fixed;
   z-index: 110;
-  overflow: show;
+  overflow: visible;
 
   display: flex;
   justify-content: center;
@@ -122,7 +122,7 @@ export default defineComponent({
 .nav-list {
   /* opacity: 0.8; */
   z-index: 100;
-  position: absolute;
+  position: fixed;
   width: 375px;
   height: 100vh;
   background-color: #ffffff;
