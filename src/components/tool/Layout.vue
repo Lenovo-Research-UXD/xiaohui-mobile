@@ -88,7 +88,7 @@ export default defineComponent({
       <div class="description">
         <pre>{{ state.tool.description }}</pre>
       </div>
-      <router-link :to="state.tool.link" append>
+      <router-link :to="state.tool.link + '/#copyUrl'" append>
         <div class="btn-more">免费试用</div>
       </router-link>
     </div>
@@ -107,7 +107,7 @@ export default defineComponent({
     <!-- demo试用模块 -->
     <div class="demo-wrapper"></div>
     <!-- 复制链接 -->
-    <div class="copyurl-wrapper">
+    <div class="copyurl-wrapper" id="copyUrl">
       <CopyUrl :msg="state.copyUrlMsg"></CopyUrl>
     </div>
     <!-- 其它工具卡片 -->

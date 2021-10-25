@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, computed } from 'vue';
+import { defineComponent, reactive, ref, computed, onMounted } from 'vue';
 export default defineComponent({
   name: 'Video',
   props: {
@@ -39,11 +39,22 @@ export default defineComponent({
   setup(props) {
     const videoDom = ref<HTMLVideoElement>(null as unknown as HTMLVideoElement);
 
+    /**
+     * 全局state
+     * @member showControls 是否显示控制区
+     * @member showBtn 是否显示播放按钮
+     * @member observer 视频dom监听器-用于检查节点是否在可视窗口内
+     */
     const state = reactive({
       showControls: false,
       showBtn: true,
+      observer: null,
     });
 
+    /**
+     * 播放功能
+     * 同时显示控制区 隐藏播放按钮
+     */
     const play = () => {
       state.showControls = true;
       state.showBtn = false;
@@ -53,24 +64,35 @@ export default defineComponent({
       }, 0);
     };
 
-    const playFull = () => {
-      state.showControls = true;
-      state.showBtn = false;
-
-      setTimeout(() => {
-        videoDom.value.play();
-        videoDom.value.requestFullscreen();
-      }, 0);
-    };
-
+    /**
+     * 监听视频播放结束时 隐藏控制栏 并重新显示播放按钮
+     */
     const completeVideo = () => {
       state.showControls = false;
       state.showBtn = true;
     };
 
+    /**
+     * 监听视频不在可视区域时暂停播放
+     */
+    onMounted(() => {
+      state.observer = new IntersectionObserver(completeVideo);
+    });
+
+    /**
+     * 工具函数-获取图片媒体资源
+     * @params name 图片路由
+     * @returns 获取的图片资源的href
+     */
     const getImageUrl = function (name: string) {
       return new URL(`../../assets/images/${name}`, import.meta.url).href;
     };
+
+    /**
+     * 工具函数-获取视频媒体资源
+     * @params name 视频路由
+     * @returns 获取的视频资源的href
+     */
     const getVideoUrl = function (name: string) {
       return new URL(`../../assets/videos/${name}`, import.meta.url).href;
     };
@@ -79,7 +101,6 @@ export default defineComponent({
       videoDom,
       state,
       play,
-      playFull,
       completeVideo,
       getImageUrl,
       getVideoUrl,
