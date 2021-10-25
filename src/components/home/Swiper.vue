@@ -35,6 +35,7 @@ const state = reactive({
   activeIndex: 0,
   timer: 0,
   offsetX: 15,
+  pageX: 0,
 });
 /**
  * 监听activeIndex 更新轮播图横向偏移量
@@ -62,11 +63,20 @@ const changeArtist = (index: number) => {
   clearInterval(state.timer);
   state.activeIndex = index;
 };
+
+/**
+ * 监听滚动事件开始时 重置pageX
+ */
+const resetOffset = (e: any) => {
+  state.pageX = e.touches[0].pageX;
+};
 /**
  * 获取滚动时的偏移量
  */
 const getOffsetX = (e: any) => {
-  console.log({ e });
+  let curpageX = e.touches[0].pageX;
+  console.log('scroll', (curpageX - state.pageX) / 3);
+  state.offsetX = (curpageX - state.pageX) / 3 + 15;
 };
 /**
  * 销毁定时器
@@ -91,7 +101,12 @@ onBeforeUnmount(() => {
 <template>
   <div class="swiper">
     <div class="swiper-wrapper">
-      <div class="cards-wrapper" :style="{ transform: 'translateX(' + state.offsetX + 'px)' }" @touchmove="getOffsetX">
+      <div
+        class="cards-wrapper"
+        :style="{ transform: 'translateX(' + state.offsetX + 'px)' }"
+        @touchstart="resetOffset"
+        @touchmove="getOffsetX"
+      >
         <div class="card" v-for="artist in artists" :key="artist.name">
           <img :src="getImageUrl(artist.quatation)" class="icon-quatation" />
           <div class="words">{{ artist.words }}</div>
@@ -142,8 +157,8 @@ onBeforeUnmount(() => {
     display: flex;
     justify-content: space-between;
 
-    transition: transform 2s ease-in-out;
-    overflow-x: scroll;
+    /* transition: transform 2s ease-in-out; */
+    /* overflow-x: scroll; */
 
     .card {
       width: 315px;
