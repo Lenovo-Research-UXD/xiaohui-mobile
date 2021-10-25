@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, reactive, ref } from 'vue';
+import { onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue';
 const artists = [
   {
     quatation: 'home/icon-quatation-1@2x.png',
@@ -34,7 +34,17 @@ const getImageUrl = function (name: string) {
 const state = reactive({
   activeIndex: 0,
   timer: 0,
+  offsetX: 15,
 });
+/**
+ * 监听activeIndex 更新轮播图横向偏移量
+ */
+watch(
+  () => state.activeIndex,
+  (index: number) => {
+    state.offsetX = -(330 * state.activeIndex) + 15;
+  }
+);
 /**
  * 定时轮播
  */
@@ -53,6 +63,12 @@ const changeArtist = (index: number) => {
   state.activeIndex = index;
 };
 /**
+ * 获取滚动时的偏移量
+ */
+const getOffsetX = (e: any) => {
+  console.log({ e });
+};
+/**
  * 销毁定时器
  */
 const clearFunction = () => {
@@ -62,7 +78,7 @@ const clearFunction = () => {
  * 实例挂载完成后执行自动轮播
  */
 onMounted(() => {
-  autoPlay();
+  // autoPlay();
 });
 /**
  * 实例注销时销毁定时器
@@ -75,7 +91,7 @@ onBeforeUnmount(() => {
 <template>
   <div class="swiper">
     <div class="swiper-wrapper">
-      <div class="cards-wrapper" :style="{ transform: 'translateX(' + -330 * state.activeIndex + 'px)' }">
+      <div class="cards-wrapper" :style="{ transform: 'translateX(' + state.offsetX + 'px)' }" @touchmove="getOffsetX">
         <div class="card" v-for="artist in artists" :key="artist.name">
           <img :src="getImageUrl(artist.quatation)" class="icon-quatation" />
           <div class="words">{{ artist.words }}</div>
@@ -108,15 +124,17 @@ onBeforeUnmount(() => {
   overflow: hidden;
 }
 .swiper-wrapper {
-  width: 1035px;
   width: 375px;
   height: 386px;
-  padding: 0 30px;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+
+  overflow-x: scroll;
+
+  padding: 0 15px;
 
   .cards-wrapper {
     width: 975px;
