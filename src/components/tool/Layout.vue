@@ -93,12 +93,7 @@ export default defineComponent({
       </router-link>
     </div>
     <!-- 三组介绍图文 -->
-    <div
-      class="details-wrapper"
-      :style="{
-        height: state.tool.title == '创意脑图工具' ? '1405px' : '1353px',
-      }"
-    >
+    <div class="details-wrapper">
       <div class="detail-wrapper" v-for="item in state.tool.details" :key="item.title">
         <img :src="getImageUrl(item.cover)" alt="tool-detail" />
         <div class="title">
@@ -173,7 +168,7 @@ export default defineComponent({
 
   .details-wrapper {
     width: 375px;
-    height: 1353px;
+    /* height: 1353px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -186,6 +181,8 @@ export default defineComponent({
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      margin: 20px 0;
 
       img {
         width: 315px;
