@@ -27,4 +27,14 @@ export interface ToolLayout {
   description: string;
   link: string;
   details: Array<ToolDetail>;
+  images?: Array<string>;
+  assets?: Array<DemoAssets>;
+}
+
+/**
+ * DemoAssets 工具小样试用的视频模块所需数据类型
+ */
+export interface DemoAssets {
+  cover: string;
+  video: string;
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 11</title>
+    <g id="mobile-web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="创意脑图工具" transform="translate(-86.000000, -2279.000000)">
+            <g id="Group-11" transform="translate(86.000000, 2279.000000)">
+                <rect id="Rectangle" fill="#000000" opacity="0.5" x="0" y="0" width="24" height="24" rx="4"></rect>
+                <g id="Group-6" transform="translate(4.500000, 5.400000)" stroke="#FFFFFF">
+                    <line x1="6.88672616" y1="5.95012069" x2="0.912208184" y2="0" id="Path-10"></line>
+                    <line x1="9.14852051" y1="8.24894842" x2="15.09629" y2="14.1865488" id="Path-10-Copy"></line>
+                    <polyline id="Path-11" stroke-linejoin="round" points="6.53983188 0.088494268 0.994460307 0.088494268 0.994460307 5.63730676"></polyline>
+                    <polyline id="Path-11-Copy" stroke-linejoin="round" transform="translate(12.241352, 11.323648) rotate(-180.000000) translate(-12.241352, -11.323648) " points="15.0140378 8.54924204 9.46866626 8.54924204 9.46866626 14.0980545"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -2,6 +2,8 @@
 import Video from '../common/Video.vue';
 import CopyUrl from '../../components/common/CopyUrl.vue';
 import Card from '../common/Card.vue';
+import DemoVideo from './DemoVideo.vue';
+import DemoImage from './DemoImage.vue';
 
 import { ToolLayout, ToolCard } from '../../types/index';
 import { defineComponent, onMounted, PropType, reactive } from 'vue';
@@ -12,6 +14,8 @@ export default defineComponent({
     Video: Video,
     CopyUrl: CopyUrl,
     Card: Card,
+    DemoVideo: DemoVideo,
+    DemoImage: DemoImage,
   },
   props: {
     tool: {
@@ -105,7 +109,14 @@ export default defineComponent({
       </div>
     </div>
     <!-- demo试用模块 -->
-    <div class="demo-wrapper"></div>
+    <div class="demo-wrapper">
+      <DemoVideo
+        v-if="state.tool.title == '流体动画工具'"
+        :toolName="state.tool.title"
+        :assets="state.tool.assets"
+      ></DemoVideo>
+      <DemoImage v-else :toolName="state.tool.title" :images="state.tool.images"></DemoImage>
+    </div>
     <!-- 复制链接 -->
     <div class="copyurl-wrapper" id="copyUrl">
       <CopyUrl :msg="state.copyUrlMsg"></CopyUrl>
@@ -202,6 +213,12 @@ export default defineComponent({
         text-align: center;
       }
     }
+  }
+
+  .demo-wrapper {
+    width: 375px;
+    height: 334px;
+    padding-top: 40px;
   }
 
   .copyurl-wrapper {
