@@ -76,7 +76,7 @@ export default defineComponent({
      * 监听视频不在可视区域时暂停播放
      */
     onMounted(() => {
-      state.observer = new IntersectionObserver(completeVideo);
+      // state.observer = new IntersectionObserver(completeVideo);
     });
 
     /**

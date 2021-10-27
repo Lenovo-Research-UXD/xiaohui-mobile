@@ -78,16 +78,19 @@ export default defineComponent({
       height: 42px;
     }
   }
-  .more {
-    @include link;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    .icon-more {
-      display: inline-block;
-      width: 14px;
-      height: 14px;
-      padding-left: 6px;
+  a {
+    width: 72px;
+    .more {
+      @include link;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      .icon-more {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        padding-left: 6px;
+      }
     }
   }
 }

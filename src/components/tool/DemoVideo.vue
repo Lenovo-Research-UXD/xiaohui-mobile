@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent, PropType } from '@vue/runtime-core';
+import { reactive } from 'vue';
 import { DemoAssets } from '../../types/index';
 export default defineComponent({
   name: 'DemoVideo',
@@ -14,15 +15,45 @@ export default defineComponent({
     },
   },
   setup() {
+    const state = reactive({
+      videoRefs: [] as Array<HTMLVideoElement>,
+      activeIndex: -1,
+      showVideoFullScreen: '',
+    });
     const getImageUrl = (name: string) => {
       return new URL(`../../assets/images/tool/${name}`, import.meta.url).href;
     };
     const getVideoUrl = (name: string) => {
-      return new URL(`../../assets/video/${name}`, import.meta.url).href;
+      return new URL(`../../assets/videos/${name}`, import.meta.url).href;
+    };
+    /**
+     * 播放视频
+     */
+    const playVideo = (index: number) => {
+      state.activeIndex = index;
+      state.videoRefs[index].play();
+    };
+    /**
+     * 获取循环列表中的ref
+     */
+    const setItemRef = (el: any) => {
+      if (el) {
+        state.videoRefs.push(el as HTMLVideoElement);
+      }
+    };
+    /**
+     * 结束播放时再次显示播放按钮
+     */
+    const completeVideo = () => {
+      state.activeIndex = -1;
     };
     return {
+      state,
       getImageUrl,
       getVideoUrl,
+      playVideo,
+      completeVideo,
+      setItemRef,
     };
   },
 });
@@ -33,8 +64,19 @@ export default defineComponent({
     <div class="description">以下素材均来自{{ toolName }}</div>
     <div class="demos-wrapper">
       <div class="demo-wrapper" v-for="(asset, index) in assets" :key="index">
-        <video :src="getVideoUrl(asset.video)" :poster="getImageUrl(asset.cover)"></video>
-        <img src="/images/common/icon-video-play.svg" alt="icon" class="icon-play" />
+        <video
+          :src="getVideoUrl(asset.video)"
+          :poster="getImageUrl(asset.cover)"
+          :ref="setItemRef"
+          @ended="completeVideo"
+        ></video>
+        <img
+          src="/images/common/icon-video-play.svg"
+          alt="icon"
+          class="icon-play"
+          @click="playVideo(index)"
+          v-show="state.activeIndex != index"
+        />
       </div>
     </div>
   </div>

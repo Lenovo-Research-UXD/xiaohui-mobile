@@ -24,6 +24,10 @@ $backgroundColor: #F5F5F5;
     -ms-overflow-style: none;
 }
 
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
 -webkit-scrollbar {
     width: 0 ！important;
 }

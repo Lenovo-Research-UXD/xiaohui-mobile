@@ -26,7 +26,7 @@ const tool: ToolLayout = {
   ] as Array<ToolDetail>,
   assets: [
     {
-      video: '',
+      video: 'iink.mp4',
       cover: 'animation-demo-cover-1@2x.png',
     },
     {
