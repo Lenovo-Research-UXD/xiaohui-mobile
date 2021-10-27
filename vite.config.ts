@@ -1,17 +1,17 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import path from "path";
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/mobile/",
+  base: '/mobile/',
   plugins: [vue()],
   css: {
     postcss: {
       plugins: [
-        require("postcss-pxtorem")({
+        require('postcss-pxtorem')({
           rootValue: 37.5,
-          propList: ["*"],
+          propList: ['*'],
           mediaQuery: true,
         }),
       ],
@@ -24,18 +24,19 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
-      "/images": "src/assets/images",
-      "/videos": "src/assets/videos",
-      "/components": "src/components",
-      "/style": "src/style",
-      "/types": "src/types",
-      "/utils": "src/utils",
+      '@': path.resolve(__dirname, 'src'),
+      '/images': 'src/assets/images',
+      '/videos': 'src/assets/videos',
+      '/lottie': 'src/assets/lottie',
+      '/components': 'src/components',
+      '/style': 'src/style',
+      '/types': 'src/types',
+      '/utils': 'src/utils',
     },
   },
   build: {
-    outDir: "./mobile",
-    minify: "terser", //混淆器, terser后文件体积更小
+    outDir: './mobile',
+    minify: 'terser', //混淆器, terser后文件体积更小
   },
   server: {
     cors: true,

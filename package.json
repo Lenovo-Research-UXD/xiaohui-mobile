@@ -7,6 +7,7 @@
         "serve": "vite preview"
     },
     "dependencies": {
+        "lottie-web": "^5.7.14",
         "swiper": "^7.0.9",
         "vue": "^3.2.16",
         "vue-router": "^4.0.12"
@@ -14,13 +15,13 @@
     "devDependencies": {
         "@types/node": "^16.11.1",
         "@vitejs/plugin-vue": "^1.9.3",
-        "postcss": "^8.3.9",
         "autoprefixer": "^10.2.4",
+        "postcss": "^8.3.9",
         "postcss-pxtorem": "^6.0.0",
-        "vue-tsc": "^0.3.0",
         "sass": "^1.32.8",
         "typescript": "^4.4.3",
-        "vite": "^2.6.4"
+        "vite": "^2.6.4",
+        "vue-tsc": "^0.3.0"
     },
     "browserslist": [
         "defaults",

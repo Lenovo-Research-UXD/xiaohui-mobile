@@ -1,6 +1,16 @@
 <template>
   <div class="banner">
-    <video src="/videos/home-banner.mp4" autoplay muted loop playsinline="true" preload="auto"></video>
+    <div class="loading" ref="loading" v-show="state.isLoading"></div>
+    <video
+      src="/videos/home-banner.mp4"
+      poster="/images/home/cover-intro@2x.png"
+      autoplay
+      muted
+      loop
+      playsinline="true"
+      preload="auto"
+      ref="introVideo"
+    ></video>
     <div class="content">
       <div class="title">小绘，设计突破想象</div>
       <div class="description">突破想象的图形设计工具集，使用AI生成技术帮助你轻松搞定设计工作</div>
@@ -10,9 +20,45 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/runtime-core';
+import { defineComponent, watchEffect } from '@vue/runtime-core';
+import { onMounted, reactive, ref, watch } from 'vue';
+import lottie from 'lottie-web';
+import Loading from '../../assets/lottie/loading/loading.json';
 export default defineComponent({
   name: 'Banner',
+  setup() {
+    const state = reactive({
+      isLoading: false,
+    });
+
+    /**
+     * 加载动画
+     */
+    const loading = ref<HTMLDivElement>(null as unknown as HTMLDivElement);
+    const loadingAnimation = () => {
+      lottie.loadAnimation({
+        container: loading.value,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: Loading,
+      });
+    };
+    /**
+     * 加载视频
+     */
+    const introVideo = ref<HTMLVideoElement>(null as unknown as HTMLVideoElement);
+
+    onMounted(() => {
+      loadingAnimation();
+    });
+
+    return {
+      loading,
+      introVideo,
+      state,
+    };
+  },
 });
 </script>
 
@@ -25,6 +71,15 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: #000000;
+
+  .loading {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 286px;
+    z-index: 10;
+  }
 
   video {
     width: 375px;
@@ -42,7 +97,7 @@ export default defineComponent({
     flex-direction: column;
     justify-content: space-between;
 
-    z-index: 10;
+    z-index: 20;
 
     .title {
       width: 180px;
@@ -68,6 +123,7 @@ export default defineComponent({
     height: 289px;
     position: absolute;
     bottom: 0;
+    z-index: 10;
   }
 }
 </style>

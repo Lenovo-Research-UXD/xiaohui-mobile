@@ -551,6 +551,11 @@
     "is-promise" "^2.0.0"
     "promise" "^7.0.1"
 
+"lottie-web@^5.7.14":
+  "integrity" "sha1-zavSVhgcPqZM8MF0ph36E3IomB8="
+  "resolved" "https://registry.npmmirror.com/lottie-web/download/lottie-web-5.7.14.tgz"
+  "version" "5.7.14"
+
 "lru-cache@^6.0.0":
   "integrity" "sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA=="
   "resolved" "https://registry.npmjs.org/lru-cache/-/lru-cache-6.0.0.tgz"
