@@ -26,15 +26,15 @@ const tool: ToolLayout = {
   ] as Array<ToolDetail>,
   assets: [
     {
-      video: 'iink.mp4',
+      video: 'animation-demo-1.mp4',
       cover: 'animation-demo-cover-1@2x.png',
     },
     {
-      video: '',
+      video: 'animation-demo-2.mp4',
       cover: 'animation-demo-cover-2@2x.png',
     },
     {
-      video: '',
+      video: 'animation-demo-3.mp4',
       cover: 'animation-demo-cover-3@2x.png',
     },
   ] as Array<DemoAssets>,

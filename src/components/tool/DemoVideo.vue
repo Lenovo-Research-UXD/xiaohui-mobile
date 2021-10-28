@@ -30,8 +30,21 @@ export default defineComponent({
      * 播放视频
      */
     const playVideo = (index: number) => {
+      if (state.activeIndex !== -1) {
+        console.log('playing:', state.videoRefs[state.activeIndex]);
+        state.videoRefs[state.activeIndex].pause();
+      }
       state.activeIndex = index;
       state.videoRefs[index].play();
+    };
+    /**
+     * 暂停视频
+     */
+    const pause = (index: number) => {
+      if (state.activeIndex === index) {
+        state.videoRefs[state.activeIndex].pause();
+        state.activeIndex = -1;
+      }
     };
     /**
      * 获取循环列表中的ref
@@ -54,6 +67,7 @@ export default defineComponent({
       playVideo,
       completeVideo,
       setItemRef,
+      pause,
     };
   },
 });
@@ -69,6 +83,7 @@ export default defineComponent({
           :poster="getImageUrl(asset.cover)"
           :ref="setItemRef"
           @ended="completeVideo"
+          @click="pause(index)"
         ></video>
         <img
           src="/images/common/icon-video-play.svg"
@@ -85,7 +100,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .demo {
   width: 375px;
-  height: 194px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
