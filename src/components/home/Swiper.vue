@@ -35,48 +35,54 @@ const state = reactive({
   activeIndex: 0,
   timer: 0,
   offsetX: 15,
+  offsetXtmp: 15,
   pageX: 0,
+  isScrolling: false,
 });
 /**
- * 监听activeIndex 更新轮播图横向偏移量
+ * 监听轮播图横向偏移量 更新activeIndex
  */
 watch(
-  () => state.activeIndex,
-  (index: number) => {
-    state.offsetX = -(330 * state.activeIndex) + 15;
+  () => state.offsetX,
+  (x: number) => {
+    // 卡片消失1/3时 认为切换到下一个卡片
+    if (x <= 15 && x > -120) {
+      state.activeIndex = 0;
+    } else if (x <= -120 && x > -420) {
+      state.activeIndex = 1;
+    } else {
+      state.activeIndex = 2;
+    }
   }
 );
 /**
- * 定时轮播
- */
-const autoPlay = () => {
-  state.timer = setInterval(() => {
-    //轮播逻辑
-    state.activeIndex = (state.activeIndex + 1) % 3;
-  }, 6000);
-};
-
-/**
- * 点击轮播图底部点点时的响应事件 切换轮播点点
- */
-const changeArtist = (index: number) => {
-  clearInterval(state.timer);
-  state.activeIndex = index;
-};
-
-/**
  * 监听滚动事件开始时 重置pageX
  */
-const resetOffset = (e: any) => {
+const resetOffsetX = (e: any) => {
   state.pageX = e.touches[0].pageX;
+  state.offsetXtmp = state.offsetX;
+  state.isScrolling = true;
 };
 /**
  * 获取滚动时的偏移量
  */
 const getOffsetX = (e: any) => {
   let curpageX = e.touches[0].pageX;
-  console.log('scroll', (curpageX - state.pageX) / 3);
-  state.offsetX = (curpageX - state.pageX) / 3 + 15;
+  let offsetX = curpageX - state.pageX; //本次偏移量
+  state.offsetX = Math.max(Math.min(state.offsetXtmp + offsetX, 15), -640); //约束偏移量在[-640,15]
+};
+/**
+ * 触摸结束时 根据当前偏移量 计算磁性吸附值 并更新底部点点的更新值
+ */
+const endOffsetX = (e: any) => {
+  if (state.offsetX <= 15 && state.offsetX > -120) {
+    state.offsetX = 15;
+  } else if (state.offsetX <= -120 && state.offsetX > -420) {
+    state.offsetX = -315;
+  } else {
+    state.offsetX = -640;
+  }
+  state.isScrolling = false;
 };
 /**
  * 销毁定时器
@@ -99,12 +105,15 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="swiper">
+  <div class="swiper" @touchend="endOffsetX">
     <div class="swiper-wrapper">
       <div
         class="cards-wrapper"
-        :style="{ transform: 'translateX(' + state.offsetX + 'px)' }"
-        @touchstart="resetOffset"
+        :style="{
+          transform: 'translateX(' + state.offsetX + 'px)',
+          transition: state.isScrolling ? '' : 'transform 1s ease-in-out',
+        }"
+        @touchstart="resetOffsetX"
         @touchmove="getOffsetX"
       >
         <div class="card" v-for="artist in artists" :key="artist.name">
@@ -126,7 +135,6 @@ onBeforeUnmount(() => {
           :class="['dot', state.activeIndex == index ? 'dot-active' : '']"
           v-for="index in [0, 1, 2]"
           :key="index"
-          @click="changeArtist(index)"
         ></div>
       </div>
     </div>
@@ -147,7 +155,7 @@ onBeforeUnmount(() => {
   justify-content: space-between;
   align-items: flex-start;
 
-  overflow-x: scroll;
+  overflow-x: hidden;
 
   padding: 0 15px;
 
@@ -156,9 +164,6 @@ onBeforeUnmount(() => {
     height: 346px;
     display: flex;
     justify-content: space-between;
-
-    /* transition: transform 2s ease-in-out; */
-    /* overflow-x: scroll; */
 
     .card {
       width: 315px;
