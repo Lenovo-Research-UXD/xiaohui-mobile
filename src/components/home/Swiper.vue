@@ -38,6 +38,7 @@ const state = reactive({
   offsetXtmp: 15,
   pageX: 0,
   isScrolling: false,
+  scale: document.documentElement.clientWidth / 375,
 });
 /**
  * 监听轮播图横向偏移量 更新activeIndex
@@ -110,7 +111,7 @@ onBeforeUnmount(() => {
       <div
         class="cards-wrapper"
         :style="{
-          transform: 'translateX(' + state.offsetX + 'px)',
+          transform: 'translateX(' + state.offsetX * state.scale + 'px)',
           transition: state.isScrolling ? '' : 'transform 1s ease-in-out',
         }"
         @touchstart="resetOffsetX"
