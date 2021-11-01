@@ -76,13 +76,25 @@ const getOffsetX = (e: any) => {
  * 触摸结束时 根据当前偏移量 计算磁性吸附值 并更新底部点点的更新值
  */
 const endOffsetX = (e: any) => {
-  if (state.offsetX <= 15 && state.offsetX > -120) {
-    state.offsetX = 15;
-  } else if (state.offsetX <= -120 && state.offsetX > -420) {
-    state.offsetX = -315;
+  // 滑动方向：从右向左
+  if (state.offsetX < state.offsetXtmp) {
+    if (state.offsetX > -120) {
+      state.offsetX = 15;
+    } else if (state.offsetX <= -120 && state.offsetX > -420) {
+      state.offsetX = -315;
+    } else {
+      state.offsetX = -640;
+    }
   } else {
-    state.offsetX = -640;
+    if (state.offsetX > -170) {
+      state.offsetX = 15;
+    } else if (state.offsetX <= -170 && state.offsetX > -520) {
+      state.offsetX = -315;
+    } else {
+      state.offsetX = -640;
+    }
   }
+
   state.isScrolling = false;
 };
 /**
@@ -112,7 +124,7 @@ onBeforeUnmount(() => {
         class="cards-wrapper"
         :style="{
           transform: 'translateX(' + state.offsetX * state.scale + 'px)',
-          transition: state.isScrolling ? '' : 'transform 1s ease-in-out',
+          transition: state.isScrolling ? '' : 'transform 0.5s ease-in-out',
         }"
         @touchstart="resetOffsetX"
         @touchmove="getOffsetX"

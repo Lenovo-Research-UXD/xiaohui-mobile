@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, computed, onMounted } from 'vue';
+import { defineComponent, reactive, ref, computed, onMounted, onUnmounted } from 'vue';
 export default defineComponent({
   name: 'Video',
   props: {
@@ -38,6 +38,20 @@ export default defineComponent({
   },
   setup(props) {
     const videoDom = ref<HTMLVideoElement>(null as unknown as HTMLVideoElement);
+
+    /**
+     * 视频脱离可视窗口时 停止播放
+     */
+    const callback = (i: any) => {
+      if (i[0].intersectionRatio < 0.5) {
+        videoDom.value.pause();
+      }
+    };
+    const options = {
+      root: null,
+      threshold: [0.01],
+    };
+    const io = new IntersectionObserver(callback, options);
 
     /**
      * 全局state
@@ -97,7 +111,19 @@ export default defineComponent({
       return new URL(`../../assets/videos/${name}`, import.meta.url).href;
     };
 
+    /**
+     * 视频可见性控制
+     */
+    onMounted(() => {
+      io.observe(videoDom.value);
+    });
+
+    onUnmounted(() => {
+      io.disconnect();
+    });
+
     return {
+      io,
       videoDom,
       state,
       play,
