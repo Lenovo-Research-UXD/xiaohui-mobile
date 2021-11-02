@@ -31,7 +31,6 @@ export default defineComponent({
      */
     const playVideo = (index: number) => {
       if (state.activeIndex !== -1) {
-        console.log('playing:', state.videoRefs[state.activeIndex]);
         state.videoRefs[state.activeIndex].pause();
       }
       state.activeIndex = index;
@@ -89,6 +88,8 @@ export default defineComponent({
           src="/images/common/icon-video-play.svg"
           alt="icon"
           class="icon-play"
+          width="46"
+          height="46"
           @click="playVideo(index)"
           v-show="state.activeIndex != index"
         />
@@ -133,6 +134,10 @@ export default defineComponent({
         width: inherit;
         height: inherit;
         position: absolute;
+      }
+
+      video::-webkit-media-controls {
+        display: none !important;
       }
 
       .icon-play {
