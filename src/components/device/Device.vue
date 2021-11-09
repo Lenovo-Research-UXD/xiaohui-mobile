@@ -27,14 +27,23 @@ const devices = [
     video: 'workCardPrinter.mp4',
   },
 ];
+const videoElement = document.getElementsByTagName('video');
+
+const handlePlay = (index: number) => {
+  console.log({ index });
+  console.log(videoElement);
+  for (let i = 0; i < videoElement.length; i += 2) {
+    Math.floor(i / 2) === index ? '' : videoElement[i].pause();
+  }
+};
 </script>
 
 <template>
   <div class="devices-wrapper">
-    <div class="device" v-for="item in devices" :key="item.title">
+    <div class="device" v-for="(item, index) in devices" :key="item.title">
       <div class="title">{{ item.title }}</div>
       <div class="description">{{ item.description }}</div>
-      <div class="video-wrapper">
+      <div class="video-wrapper" @click="handlePlay(index)">
         <Video :video="item.video" :cover="item.cover"></Video>
       </div>
     </div>
