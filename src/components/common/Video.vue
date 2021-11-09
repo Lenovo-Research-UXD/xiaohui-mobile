@@ -4,7 +4,17 @@
       @component video 
       @state 显示控件
     -->
-    <video :poster="getImageUrl(cover)" controls v-show="state.showControls" @ended="completeVideo()" ref="videoDom">
+    <video
+      :poster="getImageUrl(cover)"
+      controls
+      v-show="state.showControls"
+      @ended="completeVideo()"
+      ref="videoDom"
+      webkit-playsinline="true"
+      x5-video-player-type="h5"
+      x5-video-player-fullscreen="true"
+      x5-video-orientation="portraint"
+    >
       <source :src="getVideoUrl(video)" type="video/mp4" />
     </video>
 
@@ -12,7 +22,14 @@
       @component video 
       @state 不显示控件
     -->
-    <video :poster="getImageUrl(cover)" v-show="state.showControls == false">
+    <video
+      :poster="getImageUrl(cover)"
+      v-show="state.showControls == false"
+      webkit-playsinline="true"
+      x5-video-player-type="h5"
+      x5-video-player-fullscreen="true"
+      x5-video-orientation="portraint"
+    >
       <source :src="getVideoUrl(video)" type="video/mp4" />
     </video>
 
