@@ -10,8 +10,6 @@
       v-show="state.showControls"
       @ended="completeVideo()"
       ref="videoDom"
-
-      
       webkit-playsinline="true"
       playsinline="true"
       x-webkit-airplay="allow"
@@ -78,12 +76,10 @@ export default defineComponent({
      * 全局state
      * @member showControls 是否显示控制区
      * @member showBtn 是否显示播放按钮
-     * @member observer 视频dom监听器-用于检查节点是否在可视窗口内
      */
     const state = reactive({
       showControls: false,
       showBtn: true,
-      observer: null,
     });
 
     /**
@@ -106,13 +102,6 @@ export default defineComponent({
       state.showControls = false;
       state.showBtn = true;
     };
-
-    /**
-     * 监听视频不在可视区域时暂停播放
-     */
-    onMounted(() => {
-      // state.observer = new IntersectionObserver(completeVideo);
-    });
 
     /**
      * 工具函数-获取图片媒体资源
