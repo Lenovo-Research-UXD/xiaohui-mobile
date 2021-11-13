@@ -152,7 +152,7 @@ const myPagination = {
   opacity: 1;
   width: 10px;
   height: 10px;
-  border-radius: 50%;
+  border-radius: 100%;
   box-sizing: content-box;
   padding: 0 8px;
   margin: 0 !important;
@@ -164,6 +164,6 @@ const myPagination = {
   opacity: 1;
   width: 10px;
   height: 10px;
-  border-radius: 50%;
+  border-radius: 100%;
 }
 </style>

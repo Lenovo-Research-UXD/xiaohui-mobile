@@ -81,6 +81,7 @@ const getImageUrl = function (name: string) {
 <style lang="scss" scoped>
 .home {
   width: 375px;
+  overflow-x: hidden;
   background-color: $backgroundColor;
 
   .placeholder {
@@ -97,6 +98,11 @@ const getImageUrl = function (name: string) {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .swiper-wrapper-outer {
+    width: 375px;
+    overflow: visible;
   }
 
   .copyurl-wrapper {
