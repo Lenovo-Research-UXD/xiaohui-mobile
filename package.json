@@ -7,6 +7,7 @@
         "serve": "vite preview"
     },
     "dependencies": {
+        "@vue/runtime-core": "^3.2.21",
         "lottie-web": "^5.7.14",
         "swiper": "^7.0.9",
         "vue": "^3.2.16",
