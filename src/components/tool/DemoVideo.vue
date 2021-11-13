@@ -81,8 +81,10 @@ export default defineComponent({
           :src="getVideoUrl(asset.video)"
           :poster="getImageUrl(asset.cover)"
           :ref="setItemRef"
+          controls="false"
           @ended="completeVideo"
           @click="pause(index)"
+          @pause="pause(index)"
         ></video>
         <img
           src="/images/common/icon-video-play.svg"

@@ -5,6 +5,9 @@
       <img class="icon-xiaohui" src="/images/common/icon-xiaohui@2x.png" alt="xiaohui" />
       <img src="/images/common/icon-beta.svg" alt="beta" class="icon-beta" />
     </div>
+    <div class="btn-try" v-show="state.showBtn && [1, 2, 3].includes(state.activeIndex)">
+      <router-link to="#demo" append> 免费试用 </router-link>
+    </div>
   </div>
 
   <div class="nav-list" v-show="state.showNav">
@@ -20,11 +23,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/runtime-core';
+import { defineComponent, watch } from '@vue/runtime-core';
 import { reactive } from 'vue';
 export default defineComponent({
   name: 'Header',
-  setup() {
+  props: {
+    showBtn: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  watch: {
+    $route: {
+      handler(val: any) {
+        this.routeChange(val);
+      },
+      immediate: true,
+    },
+  },
+  setup(props) {
     const state = reactive({
       showNav: false,
       list: [
@@ -58,15 +75,41 @@ export default defineComponent({
         },
       ],
       activeIndex: 0,
+      showBtn: props.showBtn,
     });
 
+    /** 实时监听顶部是否需要显示按钮 */
+    watch(props, newProps => {
+      console.log('showBtn is changed:', newProps.showBtn);
+      let showBtn: boolean = newProps.showBtn;
+      state.showBtn = showBtn;
+    });
+
+    /**
+     * 点击导航栏菜单时的响应事件
+     */
     const clickNav = (index: number) => {
       state.activeIndex = index;
       state.showNav = false;
     };
+
+    /**
+     * 切换导航
+     */
+    const routeChange = (val: any) => {
+      for (let i = 0; i < state.list.length; i++) {
+        const l = state.list[i];
+        if (l.link === val.path) {
+          state.activeIndex = i;
+          break;
+        }
+      }
+    };
+
     return {
       state,
       clickNav,
+      routeChange,
     };
   },
 });
@@ -76,46 +119,62 @@ export default defineComponent({
 .header {
   width: 375px;
   height: 44px;
+  padding: 0 10px;
   position: fixed;
   z-index: 110;
   overflow: visible;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background-color: white;
-}
+  background-color: rgba(255, 255, 255, 0.8);
 
-.placeholder {
-  width: 375px;
-  height: 44px;
-}
-.icon-nav {
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 10px;
-}
-.icon-xiaohui-wrapper {
-  width: 80px;
-  height: 17px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .icon-xiaohui {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  -moz-backdrop-filter: blur(12px);
+  -ms-backdrop-filter: blur(12px);
+
+  .icon-nav {
+    width: 24px;
+    height: 24px;
+  }
+  .icon-xiaohui-wrapper {
     width: 80px;
     height: 17px;
+
+    position: absolute;
+    top: 14px;
+    left: 148px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon-xiaohui {
+      width: 80px;
+      height: 17px;
+    }
+
+    .icon-beta {
+      width: 14px;
+      height: 5px;
+      position: absolute;
+      right: -18px;
+      top: 1px;
+    }
   }
 
-  .icon-beta {
-    width: 14px;
-    height: 5px;
-    position: absolute;
-    right: -18px;
-    top: 1px;
+  .btn-try {
+    width: 80px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid rgba(76, 104, 255, 0.3);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 12px;
+    color: $linkColor;
+    line-height: 14px;
   }
 }
 
@@ -128,6 +187,11 @@ export default defineComponent({
   background-color: #ffffff;
 
   border-top: 1px solid rgba(68, 69, 83, 0.05);
+
+  .placeholder {
+    width: 375px;
+    height: 44px;
+  }
 
   .nav {
     width: 375px;

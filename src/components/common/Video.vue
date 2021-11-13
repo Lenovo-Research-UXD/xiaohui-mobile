@@ -4,7 +4,19 @@
       @component video 
       @state 显示控件
     -->
-    <video :poster="getImageUrl(cover)" controls v-show="state.showControls" @ended="completeVideo()" ref="videoDom">
+    <video
+      :poster="getImageUrl(cover)"
+      controls
+      v-show="state.showControls"
+      @ended="completeVideo()"
+      ref="videoDom"
+      webkit-playsinline="true"
+      playsinline="true"
+      x-webkit-airplay="allow"
+      x5-video-player-type="h5-page"
+      x5-video-player-fullscreen="true"
+      x5-video-orientation="portraint"
+    >
       <source :src="getVideoUrl(video)" type="video/mp4" />
     </video>
 
@@ -12,7 +24,14 @@
       @component video 
       @state 不显示控件
     -->
-    <video :poster="getImageUrl(cover)" v-show="state.showControls == false">
+    <video
+      :poster="getImageUrl(cover)"
+      v-show="state.showControls == false"
+      webkit-playsinline="true"
+      x5-video-player-type="h5"
+      x5-video-player-fullscreen="true"
+      x5-video-orientation="portraint"
+    >
       <source :src="getVideoUrl(video)" type="video/mp4" />
     </video>
 
@@ -57,12 +76,10 @@ export default defineComponent({
      * 全局state
      * @member showControls 是否显示控制区
      * @member showBtn 是否显示播放按钮
-     * @member observer 视频dom监听器-用于检查节点是否在可视窗口内
      */
     const state = reactive({
       showControls: false,
       showBtn: true,
-      observer: null,
     });
 
     /**
@@ -85,13 +102,6 @@ export default defineComponent({
       state.showControls = false;
       state.showBtn = true;
     };
-
-    /**
-     * 监听视频不在可视区域时暂停播放
-     */
-    onMounted(() => {
-      // state.observer = new IntersectionObserver(completeVideo);
-    });
 
     /**
      * 工具函数-获取图片媒体资源

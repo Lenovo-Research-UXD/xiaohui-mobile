@@ -1,18 +1,17 @@
 <template>
-  <div class="card">
-    <img :src="cover" alt="cover" class="cover" />
-    <div class="content">
-      <div class="title">{{ title }}</div>
-      <div class="description">{{ description }}</div>
-    </div>
-
-    <router-link :to="link" append>
+  <router-link :to="link" append>
+    <div class="card">
+      <img :src="cover" alt="cover" class="cover" />
+      <div class="content">
+        <div class="title">{{ title }}</div>
+        <div class="description">{{ description }}</div>
+      </div>
       <div class="more">
         了解详情
         <img src="/images/common/icon-right.svg" alt="more" class="icon-more" />
       </div>
-    </router-link>
-  </div>
+    </div>
+  </router-link>
 </template>
 
 <script lang="ts">
@@ -41,6 +40,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+a {
+  z-index: 10;
+}
 .card {
   width: 315px;
   height: 455px;
@@ -51,8 +53,6 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  z-index: 10;
 
   .cover {
     width: 255px;
@@ -78,19 +78,16 @@ export default defineComponent({
       height: 42px;
     }
   }
-  a {
-    width: 72px;
-    .more {
-      @include link;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      .icon-more {
-        display: inline-block;
-        width: 14px;
-        height: 14px;
-        padding-left: 6px;
-      }
+  .more {
+    @include link;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    .icon-more {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      padding-left: 6px;
     }
   }
 }

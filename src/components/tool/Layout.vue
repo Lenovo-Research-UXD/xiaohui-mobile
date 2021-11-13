@@ -109,7 +109,7 @@ export default defineComponent({
       </div>
     </div>
     <!-- demo试用模块 -->
-    <div class="demo-wrapper">
+    <div class="demo-wrapper" id="demo">
       <DemoVideo
         v-if="state.tool.title == '流体动画工具'"
         :toolName="state.tool.title"

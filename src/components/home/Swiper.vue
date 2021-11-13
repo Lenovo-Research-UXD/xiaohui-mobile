@@ -1,4 +1,14 @@
 <script setup lang="ts">
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+// import Swiper core and required modules
+import SwiperCore, { Pagination } from 'swiper';
+// install Swiper modules
+SwiperCore.use([Pagination]);
+
 import { onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue';
 const artists = [
   {
@@ -40,215 +50,120 @@ const state = reactive({
   isScrolling: false,
   scale: document.documentElement.clientWidth / 375,
 });
-/**
- * 监听轮播图横向偏移量 更新activeIndex
- */
-watch(
-  () => state.offsetX,
-  (x: number) => {
-    // 卡片消失1/3时 认为切换到下一个卡片
-    if (x <= 15 && x > -120) {
-      state.activeIndex = 0;
-    } else if (x <= -120 && x > -420) {
-      state.activeIndex = 1;
-    } else {
-      state.activeIndex = 2;
-    }
-  }
-);
-/**
- * 监听滚动事件开始时 重置pageX
- */
-const resetOffsetX = (e: any) => {
-  state.pageX = e.touches[0].pageX;
-  state.offsetXtmp = state.offsetX;
-  state.isScrolling = true;
-};
-/**
- * 获取滚动时的偏移量
- */
-const getOffsetX = (e: any) => {
-  let curpageX = e.touches[0].pageX;
-  let offsetX = curpageX - state.pageX; //本次偏移量
-  state.offsetX = Math.max(Math.min(state.offsetXtmp + offsetX, 15), -640); //约束偏移量在[-640,15]
-};
-/**
- * 触摸结束时 根据当前偏移量 计算磁性吸附值 并更新底部点点的更新值
- */
-const endOffsetX = (e: any) => {
-  // 滑动方向：从右向左
-  if (state.offsetX < state.offsetXtmp) {
-    if (state.offsetX > -120) {
-      state.offsetX = 15;
-    } else if (state.offsetX <= -120 && state.offsetX > -420) {
-      state.offsetX = -315;
-    } else {
-      state.offsetX = -640;
-    }
-  } else {
-    if (state.offsetX > -170) {
-      state.offsetX = 15;
-    } else if (state.offsetX <= -170 && state.offsetX > -520) {
-      state.offsetX = -315;
-    } else {
-      state.offsetX = -640;
-    }
-  }
 
-  state.isScrolling = false;
+/** 自定义分页样式 */
+const myPagination = {
+  bulletActiveClass: 'swiper-pagination-active',
+  bulletClass: 'swiper-pagination-normal',
+  type: 'bullets',
 };
-/**
- * 销毁定时器
- */
-const clearFunction = () => {
-  clearInterval(state.timer);
-};
-/**
- * 实例挂载完成后执行自动轮播
- */
-onMounted(() => {
-  // autoPlay();
-});
-/**
- * 实例注销时销毁定时器
- */
-onBeforeUnmount(() => {
-  clearFunction();
-});
 </script>
 
 <template>
-  <div class="swiper" @touchend="endOffsetX">
-    <div class="swiper-wrapper">
-      <div
-        class="cards-wrapper"
-        :style="{
-          transform: 'translateX(' + state.offsetX * state.scale + 'px)',
-          transition: state.isScrolling ? '' : 'transform 0.5s ease-in-out',
-        }"
-        @touchstart="resetOffsetX"
-        @touchmove="getOffsetX"
-      >
-        <div class="card" v-for="artist in artists" :key="artist.name">
-          <img :src="getImageUrl(artist.quatation)" class="icon-quatation" />
-          <div class="words">{{ artist.words }}</div>
-          <div class="artist">
-            <div class="intro">
-              <p>{{ artist.title }}</p>
-              <p>{{ artist.name }}</p>
-            </div>
-            <img :src="getImageUrl(artist.avatar)" alt="avatar" class="avatar" />
+  <swiper :pagination="true" :slidesPerView="'auto'" :centeredSlides="true" :spaceBetween="15" class="mySwiper">
+    <swiper-slide class="card-wrapper" v-for="artist in artists" :key="artist.name">
+      <div class="card">
+        <img :src="getImageUrl(artist.quatation)" class="icon-quatation" />
+        <div class="words">{{ artist.words }}</div>
+        <div class="artist">
+          <div class="intro">
+            <p>{{ artist.title }}</p>
+            <p>{{ artist.name }}</p>
           </div>
+          <img :src="getImageUrl(artist.avatar)" alt="avatar" class="avatar" />
         </div>
       </div>
-    </div>
-    <div class="swiper-dots-wrapper">
-      <div class="swiper-dots">
-        <div
-          :class="['dot', state.activeIndex == index ? 'dot-active' : '']"
-          v-for="index in [0, 1, 2]"
-          :key="index"
-        ></div>
-      </div>
-    </div>
-  </div>
+    </swiper-slide>
+  </swiper>
 </template>
 
 <style lang="scss" scoped>
-.swiper {
-  width: 375px;
-  overflow: hidden;
-}
-.swiper-wrapper {
+.mySwiper {
   width: 375px;
   height: 386px;
+  overflow: visible;
+}
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
+.card-wrapper {
+  width: 315px;
+  height: 346px;
 
-  overflow-x: hidden;
-
-  padding: 0 15px;
-
-  .cards-wrapper {
-    width: 975px;
+  .card {
+    width: 315px;
     height: 346px;
+    background: #ffffff;
+    background-clip: border-box;
+    box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    padding: 30px 30px 55px 30px;
+
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    .icon-quatation {
+      width: 25px;
+      height: 28px;
+      align-self: flex-start;
+    }
 
-    .card {
-      width: 315px;
-      height: 346px;
-      background: #ffffff;
-      box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.05);
-      border-radius: 6px;
-      padding: 30px 30px 55px 30px;
+    .words {
+      width: 255px;
+      height: 140px;
+      font-size: 16px;
+      line-height: 28px;
+    }
 
+    .artist {
+      align-self: flex-end;
+      width: 220px;
+      height: 48px;
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
-      .icon-quatation {
-        width: 25px;
-        height: 28px;
-        align-self: flex-start;
+      align-items: center;
+
+      .intro {
+        width: 153px;
+        height: 38px;
+        font-size: 14px;
+        line-height: 19px;
+        text-align: right;
       }
 
-      .words {
-        width: 255px;
-        height: 140px;
-        font-size: 16px;
-        line-height: 28px;
-      }
-
-      .artist {
-        align-self: flex-end;
-        width: 220px;
+      .avatar {
+        width: 48px;
         height: 48px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .intro {
-          width: 153px;
-          height: 38px;
-          font-size: 14px;
-          line-height: 19px;
-          text-align: right;
-        }
-
-        .avatar {
-          width: 48px;
-          height: 48px;
-        }
       }
     }
   }
 }
-.swiper-dots-wrapper {
+</style>
+
+<style>
+.swiper-wrapper {
   width: 375px;
+  height: 346px;
+}
+.swiper-pagination {
+  bottom: -8px !important;
+}
+.swiper-pagination-bullet {
+  background: #d8d8d8;
+  background-clip: content-box;
+  opacity: 1;
+  width: 10px;
   height: 10px;
-  display: flex;
-  justify-content: center;
-  overflow-x: hidden;
-  .swiper-dots {
-    width: 62px;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
+  border-radius: 100%;
+  box-sizing: content-box;
+  padding: 0 8px;
+  margin: 0 !important;
+}
+.swiper-pagination-bullet-active {
+  background: #9a9a9a;
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 10px;
-
-      background: #d8d8d8;
-    }
-
-    .dot-active {
-      background: #9a9a9a;
-    }
-  }
+  background-clip: content-box;
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
 }
 </style>
