@@ -10,8 +10,12 @@
       v-show="state.showControls"
       @ended="completeVideo()"
       ref="videoDom"
+
+      
       webkit-playsinline="true"
-      x5-video-player-type="h5"
+      playsinline="true"
+      x-webkit-airplay="allow"
+      x5-video-player-type="h5-page"
       x5-video-player-fullscreen="true"
       x5-video-orientation="portraint"
     >

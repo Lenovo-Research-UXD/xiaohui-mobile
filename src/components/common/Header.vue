@@ -86,6 +86,9 @@ export default defineComponent({
   background-color: rgba(255, 255, 255, 0.8);
 
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  -moz-backdrop-filter: blur(12px);
+  -ms-backdrop-filter: blur(12px);
 }
 
 .placeholder {

@@ -69,7 +69,7 @@ const getImageUrl = function (name: string) {
         :link="page.link"
       ></OtherPages>
     </div>
-    <div class="swiper-wrapper">
+    <div class="swiper-wrapper-outer">
       <Swiper></Swiper>
     </div>
     <div class="copyurl-wrapper">
