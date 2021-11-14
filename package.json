@@ -4,6 +4,8 @@
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc --noEmit && vite build",
+        "deploy": "scp -r ./mobile infomgr@10.120.16.111:/home/infomgr",
+        "deploy:test": "scp -r ./mobile root@121.5.251.210:/home/lighthouse/www",
         "serve": "vite preview"
     },
     "dependencies": {

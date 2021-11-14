@@ -165,7 +165,6 @@ export default defineComponent({
   .btn-play {
     width: 89px;
     height: 89px;
-    /* position: absolute; */
     opacity: 0.8;
     transition: all 0.2s ease-in-out;
 
@@ -181,3 +180,5 @@ export default defineComponent({
   }
 }
 </style>
+
+l
