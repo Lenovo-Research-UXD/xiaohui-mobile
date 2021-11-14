@@ -65,26 +65,30 @@ const showNav = (res: boolean) => {
   bottom: 0;
   background: rgba(255, 255, 255, 0.4);
   z-index: 50;
+  opacity: 1;
 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 .blur-enter-active {
-  transition: backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+  transition: backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s, opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
     -webkit-backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
 }
 .blur-leave-active {
-  transition: backdrop-filter 0.4s ease-in-out 0.3s, -webkit-backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+  transition: backdrop-filter 0.4s ease-in-out 0.3s, opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.5s,
+    -webkit-backdrop-filter 0.4s ease-in-out 0.3s;
 }
 
 .blur-enter-from,
 .blur-leave-to {
+  opacity: 0;
   backdrop-filter: blur(0);
   -webkit-backdrop-filter: blur(0px);
 }
 
 .blur-enter-to,
 .blur-leave-from {
+  opacity: 1;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
