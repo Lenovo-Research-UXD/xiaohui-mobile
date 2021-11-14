@@ -1,13 +1,14 @@
 <template>
   <div class="header">
     <div class="icon-nav-wrapper" alt="nav" @click="clickNavHeader">
-      <img class="icon-nav" src="/images/common/icon-nav@2x.png" v-show="!state.showNav" />
-      <div class="icon-loading" ref="loading" v-show="state.showNav"></div>
+      <img class="icon-nav" src="/images/common/icon-nav@2x.png" />
+      <!-- <div class="icon-loading" ref="loading" v-show="state.showNav"></diåv> -->
     </div>
     <div class="icon-xiaohui-wrapper">
       <img class="icon-xiaohui" src="/images/common/icon-xiaohui@2x.png" alt="xiaohui" />
       <img src="/images/common/icon-beta.svg" alt="beta" class="icon-beta" />
     </div>
+
     <div class="btn-try" v-show="state.showBtn && [1, 2, 3].includes(state.activeIndex)">
       <router-link to="#demo" append> 免费试用 </router-link>
     </div>
@@ -247,61 +248,61 @@ export default defineComponent({
     const styles = reactive({
       line: [
         {
-          bottom: 0,
+          bottom: -10,
           opacity: 0,
         },
         {
-          bottom: 0,
+          bottom: -30,
           opacity: 0,
         },
         {
-          bottom: 0,
+          bottom: -30,
           opacity: 0,
         },
         {
-          bottom: 0,
+          bottom: -30,
           opacity: 0,
         },
         {
-          bottom: 0,
+          bottom: -38,
           opacity: 0,
         },
         {
-          bottom: 0,
+          bottom: -30,
           opacity: 0,
         },
         {
-          bottom: 0,
+          bottom: -40,
           opacity: 0,
         },
       ],
       title: [
         {
-          bottom: 0,
+          bottom: -10,
           opacity: 0,
         },
         {
-          bottom: 0,
+          bottom: -20,
           opacity: 0,
         },
         {
-          bottom: 0,
+          bottom: -40,
           opacity: 0,
         },
         {
-          bottom: 0,
+          bottom: -40,
           opacity: 0,
         },
         {
-          bottom: 0,
+          bottom: -40,
           opacity: 0,
         },
         {
-          bottom: 0,
+          bottom: -40,
           opacity: 0,
         },
         {
-          bottom: 0,
+          bottom: -40,
           opacity: 0,
         },
       ],
@@ -351,7 +352,7 @@ export default defineComponent({
       setTimeout(() => {
         styles.line = styleActive.line;
         styles.title = styleActive.title;
-      }, 0);
+      }, 150);
       context.emit('showNav', state.showNav);
     };
 
