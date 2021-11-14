@@ -11,7 +11,6 @@
       x5-video-player-type="h5"
       playsinline="true"
       preload="true"
-      controls="false"
       ref="introVideo"
     ></video>
     <div class="content">
@@ -66,6 +65,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+/* 隐藏video控件 */
+video::-webkit-media-controls-enclosure {
+  display: none;
+}
 .banner {
   width: 375px;
   height: 800px;

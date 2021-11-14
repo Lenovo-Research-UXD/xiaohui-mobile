@@ -28,7 +28,7 @@ export default defineComponent({
         await clipboardObj.writeText(url);
         alert('链接已复制');
       } else {
-        alert('该浏览器不支持剪切板操作');
+        alert('该浏览器不支持剪切板操作，请手动复制xiaohui.ai');
       }
     };
     return {
