@@ -74,7 +74,7 @@ const showNav = (res: boolean) => {
     -webkit-backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
 }
 .blur-leave-active {
-  transition: backdrop-filter 0.4s ease-in-out -0.15s, -webkit-backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1) -0.35s;
+  transition: backdrop-filter 0.4s ease-in-out 0.3s, -webkit-backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
 }
 
 .blur-enter-from,

@@ -1,6 +1,9 @@
 <template>
   <div class="header">
-    <img class="icon-nav" src="/images/common/icon-nav@2x.png" alt="nav" @click="clickNavHeader" />
+    <div class="icon-nav-wrapper" alt="nav" @click="clickNavHeader">
+      <img class="icon-nav" src="/images/common/icon-nav@2x.png" v-show="!state.showNav" />
+      <div class="icon-loading" ref="loading" v-show="state.showNav"></div>
+    </div>
     <div class="icon-xiaohui-wrapper">
       <img class="icon-xiaohui" src="/images/common/icon-xiaohui@2x.png" alt="xiaohui" />
       <img src="/images/common/icon-beta.svg" alt="beta" class="icon-beta" />
@@ -38,8 +41,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from '@vue/runtime-core';
+import { defineComponent, onMounted, ref, watch } from '@vue/runtime-core';
 import { reactive } from 'vue';
+import lottie from 'lottie-web';
+import NavLoadingLottie from '../../assets/lottie/loading/loading.json';
 export default defineComponent({
   name: 'Header',
   props: {
@@ -58,6 +63,21 @@ export default defineComponent({
     },
   },
   setup(props, context) {
+    /** 导航栏加载动画 */
+    const loading = ref<HTMLDivElement>(null as unknown as HTMLDivElement);
+    const navLoading = () => {
+      lottie.loadAnimation({
+        container: loading.value,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: NavLoadingLottie,
+      });
+    };
+    onMounted(() => {
+      navLoading();
+    });
+
     const state = reactive({
       showNav: false,
       list: [
@@ -286,6 +306,7 @@ export default defineComponent({
         },
       ],
     });
+
     /** 实时监听顶部是否需要显示按钮 */
     watch(props, newProps => {
       let showBtn: boolean = newProps.showBtn;
@@ -316,9 +337,9 @@ export default defineComponent({
         styles.title = styleInit.title;
         setTimeout(() => {
           state.showNav = false;
-          context.emit('showNav', state.showNav);
         }, 450);
       }, 0);
+      context.emit('showNav', false);
     };
 
     /** 开始显示导航栏面板 */
@@ -349,9 +370,11 @@ export default defineComponent({
 
     return {
       state,
+      loading,
       styles,
       styleInit,
       styleActive,
+      navLoading,
       clickNavHeader,
       clickNav,
       foldNav,
@@ -416,11 +439,26 @@ export default defineComponent({
   -moz-backdrop-filter: blur(12px);
   -ms-backdrop-filter: blur(12px);
 
-  .icon-nav {
+  .icon-nav-wrapper {
     width: 44px;
     height: 44px;
-    padding: 10px;
+    position: relative;
+    .icon-nav {
+      width: 44px;
+      height: 44px;
+      padding: 10px;
+      z-index: 10;
+      position: absolute;
+      top: 0;
+    }
+    .icon-loading {
+      width: 44px;
+      height: 44px;
+      position: absolute;
+      top: 0;
+    }
   }
+
   .icon-xiaohui-wrapper {
     width: 80px;
     height: 17px;
