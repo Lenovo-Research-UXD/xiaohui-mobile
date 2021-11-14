@@ -10,18 +10,27 @@
     </div>
   </div>
 
-  <transition name="fade">
-    <div class="nav-list" v-show="state.showNav" @click="foldNav">
-      <div class="placeholder"></div>
-      <div class="nav" v-for="(item, index) in state.list" :key="item.name">
-        <router-link :to="item.link" append>
-          <div :class="['nav-name', index == state.activeIndex ? 'nav-active' : '']" @click.stop="clickNav(index)">
-            {{ item.name }}
-          </div>
-        </router-link>
-      </div>
+  <div class="nav-list" v-show="state.showNav" @click="foldNav">
+    <div class="placeholder"></div>
+    <div class="nav" v-for="(item, index) in state.list" :key="item.name">
+      <router-link :to="item.link" append>
+        <div
+          :class="[state.navNameClass, 'nav-name', index == state.activeIndex ? 'nav-active' : '']"
+          :style="{
+            transform: 'translateY(' + styles.title[index].bottom + 'px)',
+            opacity: styles.title[index].opacity,
+          }"
+          @click.stop="clickNav(index)"
+        >
+          {{ item.name }}
+        </div>
+      </router-link>
+      <div
+        :class="['border-bottom', state.borderBottomClass]"
+        :style="{ transform: 'translateY(' + styles.line[index].bottom + 'px)', opacity: styles.line[index].opacity }"
+      ></div>
     </div>
-  </transition>
+  </div>
 
   <transition name="bg">
     <div class="bg" v-show="state.showNav"></div>
@@ -29,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, getCurrentInstance, watch } from '@vue/runtime-core';
+import { defineComponent, watch } from '@vue/runtime-core';
 import { reactive } from 'vue';
 export default defineComponent({
   name: 'Header',
@@ -83,8 +92,200 @@ export default defineComponent({
       ],
       activeIndex: 0,
       showBtn: props.showBtn,
+      borderBottomClass: '',
+      navNameClass: '',
     });
 
+    /** 初始样式 */
+    const styleInit = {
+      line: [
+        {
+          bottom: -10,
+          opacity: 0,
+        },
+        {
+          bottom: -30,
+          opacity: 0,
+        },
+        {
+          bottom: -30,
+          opacity: 0,
+        },
+        {
+          bottom: -30,
+          opacity: 0,
+        },
+        {
+          bottom: -38,
+          opacity: 0,
+        },
+        {
+          bottom: -30,
+          opacity: 0,
+        },
+        {
+          bottom: -40,
+          opacity: 0,
+        },
+      ],
+      title: [
+        {
+          bottom: -10,
+          opacity: 0,
+        },
+        {
+          bottom: -20,
+          opacity: 0,
+        },
+        {
+          bottom: -40,
+          opacity: 0,
+        },
+        {
+          bottom: -40,
+          opacity: 0,
+        },
+        {
+          bottom: -40,
+          opacity: 0,
+        },
+        {
+          bottom: -40,
+          opacity: 0,
+        },
+        {
+          bottom: -40,
+          opacity: 0,
+        },
+      ],
+    };
+
+    /** 点击样式 */
+    const styleActive = {
+      line: [
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+      ],
+      title: [
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
+      ],
+    };
+
+    const styles = reactive({
+      line: [
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+      ],
+      title: [
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+        {
+          bottom: 0,
+          opacity: 0,
+        },
+      ],
+    });
     /** 实时监听顶部是否需要显示按钮 */
     watch(props, newProps => {
       let showBtn: boolean = newProps.showBtn;
@@ -108,13 +309,28 @@ export default defineComponent({
      * 关闭显示导航栏面板
      */
     const foldNav = () => {
-      state.showNav = false;
-      context.emit('showNav', state.showNav);
+      state.borderBottomClass = 'border-bottom-animation-leave';
+      state.navNameClass = 'nav-name-animation-leave';
+      setTimeout(() => {
+        styles.line = styleInit.line;
+        styles.title = styleInit.title;
+        setTimeout(() => {
+          state.showNav = false;
+          context.emit('showNav', state.showNav);
+        }, 450);
+      }, 0);
     };
 
     /** 开始显示导航栏面板 */
     const unfoldNav = () => {
       state.showNav = true;
+
+      state.borderBottomClass = 'border-bottom-animation-enter';
+      state.navNameClass = 'nav-name-animation-enter';
+      setTimeout(() => {
+        styles.line = styleActive.line;
+        styles.title = styleActive.title;
+      }, 0);
       context.emit('showNav', state.showNav);
     };
 
@@ -133,6 +349,9 @@ export default defineComponent({
 
     return {
       state,
+      styles,
+      styleInit,
+      styleActive,
       clickNavHeader,
       clickNav,
       foldNav,
@@ -144,32 +363,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-/** nav-list transition */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 1s ease, transform 0.8s ease-in;
-}
-.fade-enter-from {
-  transform: translateY(calc(44px - 100vh));
-  opacity: 0;
-}
-.fade-enter-to {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fade-leave-from {
-  transform: translateY(0);
-  opacity: 1;
-}
-.fade-leave-to {
-  transform: translateY(calc(44px - 100vh));
-  opacity: 0;
-}
-
 /** bg */
 .bg {
-  z-index: 100;
+  z-index: 90;
   width: 375px;
   height: 100vh;
   position: fixed;
@@ -183,7 +379,7 @@ export default defineComponent({
   transition: opacity 0.48s ease-in-out 0.05s, transform 0.48s cubic-bezier(0.4, 0, 0.2, 1) 0.05s;
 }
 .bg-leave-active {
-  transition: opacity 0.39s ease-in-out 0.24s, transform 0.44s cubic-bezier(0.4, 0, 0.2, 1) 0.19s;
+  transition: opacity 0.39s ease-in-out -0.21s, transform 0.44s cubic-bezier(0.4, 0, 0.2, 1) -0.26s;
 }
 .bg-enter-from {
   opacity: 0;
@@ -266,32 +462,148 @@ export default defineComponent({
 }
 
 .nav-list {
-  display: none;
+  /* display: none; */
   z-index: 100;
   position: fixed;
   width: 375px;
   height: 100vh;
-  background-color: #ffffff;
-
-  border-top: 1px solid rgba(68, 69, 83, 0.05);
 
   .placeholder {
     width: 375px;
-    height: 44px;
+    height: 45px;
+    border-bottom: 1px solid rgba(68, 69, 83, 0.1);
   }
 
   .nav {
     width: 375px;
     height: 58px;
-    border-bottom: 1px solid rgba(68, 69, 83, 0.05);
     padding: 20px 30px;
+    position: relative;
 
     .nav-name {
       font-size: 16px;
       line-height: 21px;
+      opacity: 0;
     }
     .nav-active {
       color: $linkColor;
+    }
+
+    .border-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 375px;
+      height: 1px;
+      background-color: rgba(68, 69, 83, 0.1);
+      opacity: 0;
+    }
+
+    &:nth-of-type(2) {
+      .nav-name-animation-enter {
+        transition: transform 0.3s ease-in-out 0.21s, opacity 0.3s ease-in-out 0.21s;
+      }
+      .nav-name-animation-leave {
+        transition: transform 0.35s ease-in-out 0.41s, opacity 0.2s ease-in-out 0.45s;
+      }
+      .border-bottom-animation-enter {
+        transition: transform 0.2s ease-in-out 0.1s, opacity 0.2s ease-in-out 0.1s;
+      }
+      .border-bottom-animation-leave {
+        transition: transform 0.2s ease-in-out 0.35s, opacity 0.2s ease-in-out 0.35s;
+      }
+    }
+    &:nth-of-type(3) {
+      .nav-name-animation-enter {
+        transition: transform 0.3s ease-in-out 0.24s, opacity 0.3s ease-in-out 0.24s;
+      }
+      .nav-name-animation-leave {
+        transition: transform 0.25s ease-in-out 0.36s, opacity 0.2s ease-in-out 0.4s;
+      }
+      .border-bottom-animation-enter {
+        transition: transform 0.2s ease-in-out 0.15s, opacity 0.2s ease-in-out 0.15s;
+      }
+      .border-bottom-animation-leave {
+        transition: transform 0.2s ease-in-out 0.3s, opacity 0.2s ease-in-out 0.3s;
+      }
+    }
+    &:nth-of-type(4) {
+      .nav-name-animation-enter {
+        transition: transform 0.3s ease-in-out 0.27s, opacity 0.3s ease-in-out 0.27s;
+      }
+      .nav-name-animation-leave {
+        transition: transform 0.25s ease-in-out 0.31s, opacity 0.2s ease-in-out 0.35s;
+      }
+      .border-bottom-animation-enter {
+        transition: transform 0.2s ease-in-out 0.2s, opacity 0.2s ease-in-out 0.2s;
+      }
+      .border-bottom-animation-leave {
+        transition: transform 0.2s ease-in-out 0.25s, opacity 0.2s ease-in-out 0.25s;
+      }
+    }
+    &:nth-of-type(5) {
+      .nav-name-animation-enter {
+        transition: transform 0.3s ease-in-out 0.3s, opacity 0.3s ease-in-out 0.3s;
+      }
+      .nav-name-animation-leave {
+        transition: transform 0.25s ease-in-out 0.26s, opacity 0.2s ease-in-out 0.3s;
+      }
+      .border-bottom-animation-enter {
+        transition: transform 0.2s ease-in-out 0.25s, opacity 0.2s ease-in-out 0.25s;
+      }
+      .border-bottom-animation-leave {
+        transition: transform 0.2s ease-in-out 0.2s, opacity 0.2s ease-in-out 0.2s;
+      }
+    }
+    &:nth-of-type(6) {
+      .nav-name-animation-enter {
+        transition: transform 0.3s ease-in-out 0.32s, opacity 0.3s ease-in-out 0.32s;
+      }
+      .nav-name-animation-leave {
+        transition: transform 0.25s ease-in-out 0.21s, opacity 0.2s ease-in-out 0.25s;
+      }
+      .border-bottom-animation-enter {
+        transition: transform 0.2s ease-in-out 0.3s, opacity 0.2s ease-in-out 0.3s;
+      }
+      .border-bottom-animation-leave {
+        transition: transform 0.2s ease-in-out 0.15s, opacity 0.2s ease-in-out 0.15s;
+      }
+    }
+    &:nth-of-type(7) {
+      .nav-name-animation-enter {
+        transition: transform 0.3s ease-in-out 0.35s, opacity 0.3s ease-in-out 0.35s;
+      }
+      .nav-name-animation-leave {
+        transition: transform 0.25s ease-in-out 0.16s, opacity 0.2s ease-in-out 0.2s;
+      }
+      .border-bottom-animation-enter {
+        transition: transform 0.2s ease-in-out 0.35s, opacity 0.2s ease-in-out 0.35s;
+      }
+      .border-bottom-animation-leave {
+        transition: transform 0.2s ease-in-out 0.1s, opacity 0.2s ease-in-out 0.1s;
+      }
+    }
+    &:nth-of-type(8) {
+      .nav-name-animation-enter {
+        transition: transform 0.3s ease-in-out 0.38s, opacity 0.3s ease-in-out 0.38s;
+      }
+      .nav-name-animation-leave {
+        transition: transform 0.25s ease-in-out 0.11s, opacity 0.2s ease-in-out 0.15s;
+      }
+      .border-bottom-animation-enter {
+        transition: transform 0.2s ease-in-out 0.4s, opacity 0.2s ease-in-out 0.4s;
+      }
+      .border-bottom-animation-leave {
+        transition: transform 0.2s ease-in-out 0.05s, opacity 0.2s ease-in-out 0.05s;
+      }
+    }
+
+    .border-bottom-animation-enter {
+      opacity: 1;
+    }
+
+    .nav-name-animation-enter {
+      opacity: 1;
     }
   }
 }
