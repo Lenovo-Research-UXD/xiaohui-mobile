@@ -81,7 +81,6 @@ export default defineComponent({
           :src="getVideoUrl(asset.video)"
           :poster="getImageUrl(asset.cover)"
           :ref="setItemRef"
-          controls="false"
           @ended="completeVideo"
           @click="pause(index)"
           @pause="pause(index)"
@@ -90,8 +89,6 @@ export default defineComponent({
           src="/images/common/icon-video-play.svg"
           alt="icon"
           class="icon-play"
-          width="46"
-          height="46"
           @click="playVideo(index)"
           v-show="state.activeIndex != index"
         />
