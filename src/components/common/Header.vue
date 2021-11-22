@@ -12,9 +12,7 @@
       <img src="/images/common/icon-beta.svg" alt="beta" class="icon-beta" />
     </div>
 
-    <div class="btn-try" v-show="state.showBtn && [1, 2, 3].includes(state.activeIndex)">
-      <router-link to="#demo" append> 免费试用 </router-link>
-    </div>
+    <div class="btn-try" v-show="state.showBtn && [1, 2, 3].includes(state.activeIndex)" @click="toDemo">免费试用</div>
   </div>
 
   <div class="nav-list" v-show="state.showNav" @click="foldNav">
@@ -47,7 +45,7 @@ import { reactive } from 'vue';
 import lottie from 'lottie-web';
 import NavOpenLottie from '../../assets/lottie/navBtn/open.json';
 import NavCloseLottie from '../../assets/lottie/navBtn/close.json';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 export default defineComponent({
   name: 'Header',
   props: {
@@ -336,6 +334,7 @@ export default defineComponent({
      * 点击导航栏菜单时的响应事件
      */
     const router = useRouter();
+    const route = useRoute();
     const clickNav = (index: number, link: string) => {
       state.activeIndex = index;
 
@@ -398,6 +397,22 @@ export default defineComponent({
       }
     };
 
+    /**
+     * 调转到小样模块
+     */
+    const toDemo = () => {
+      state.showNav ? foldNav() : '';
+
+      const scale = document.documentElement.clientWidth / 375;
+      const height = [1860, 1950, 1900][state.activeIndex - 1];
+      setTimeout(() => {
+        window.scrollTo({
+          top: height * scale,
+          behavior: 'smooth',
+        });
+      }, 500);
+    };
+
     return {
       state,
       styles,
@@ -412,6 +427,7 @@ export default defineComponent({
       foldNav,
       unfoldNav,
       routeChange,
+      toDemo,
     };
   },
 });
