@@ -37,7 +37,11 @@ const showNav = (res: boolean) => {
 </script>
 
 <template>
-  <Header :showBtn="state.showBtn" @showNav="showNav"></Header>
+  <keep-alive>
+    <div id="header">
+      <Header :showBtn="state.showBtn" @showNav="showNav"></Header>
+    </div>
+  </keep-alive>
   <div class="placeholder" ref="placeholder"></div>
 
   <transition name="blur">
@@ -51,6 +55,9 @@ const showNav = (res: boolean) => {
 </template>
 
 <style scoped>
+#header {
+  z-index: 100;
+}
 .placeholder {
   width: 375px;
   height: 44px;

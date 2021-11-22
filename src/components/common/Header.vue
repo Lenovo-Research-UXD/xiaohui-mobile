@@ -19,19 +19,16 @@
 
   <div class="nav-list" v-show="state.showNav" @click="foldNav">
     <div class="placeholder"></div>
-    <div class="nav" v-for="(item, index) in state.list" :key="item.name">
-      <router-link :to="item.link" append>
-        <div
-          :class="[state.navNameClass, 'nav-name', index == state.activeIndex ? 'nav-active' : '']"
-          :style="{
-            transform: 'translateY(' + styles.title[index].bottom + 'px)',
-            opacity: styles.title[index].opacity,
-          }"
-          @click.stop="clickNav(index)"
-        >
-          {{ item.name }}
-        </div>
-      </router-link>
+    <div class="nav" v-for="(item, index) in state.list" :key="item.name" @click="clickNav(index, item.link)">
+      <div
+        :class="[state.navNameClass, 'nav-name', index == state.activeIndex ? 'nav-active' : '']"
+        :style="{
+          transform: 'translateY(' + styles.title[index].bottom + 'px)',
+          opacity: styles.title[index].opacity,
+        }"
+      >
+        {{ item.name }}
+      </div>
       <div
         :class="['border-bottom', state.borderBottomClass]"
         :style="{ transform: 'translateY(' + styles.line[index].bottom + 'px)', opacity: styles.line[index].opacity }"
@@ -50,6 +47,7 @@ import { reactive } from 'vue';
 import lottie from 'lottie-web';
 import NavOpenLottie from '../../assets/lottie/navBtn/open.json';
 import NavCloseLottie from '../../assets/lottie/navBtn/close.json';
+import { useRouter } from 'vue-router';
 export default defineComponent({
   name: 'Header',
   props: {
@@ -91,6 +89,7 @@ export default defineComponent({
       });
     });
 
+    /** 页面状态管理 */
     const state = reactive({
       showNav: false,
       list: [
@@ -130,7 +129,7 @@ export default defineComponent({
       btnOpen: true,
     });
 
-    /** 初始样式 */
+    /** 导航栏 初始样式 */
     const styleInit = {
       line: [
         {
@@ -194,7 +193,7 @@ export default defineComponent({
       ],
     };
 
-    /** 点击样式 */
+    /** 导航栏 点击样式 */
     const styleActive = {
       line: [
         {
@@ -258,6 +257,7 @@ export default defineComponent({
       ],
     };
 
+    /** 导航栏 当前样式 */
     const styles = reactive({
       line: [
         {
@@ -329,20 +329,26 @@ export default defineComponent({
 
     /** 点击导航栏头部的响应事件 */
     const clickNavHeader = () => {
-      state.btnOpen = state.showNav === true ? false : true;
       state.showNav === true ? foldNav() : unfoldNav();
     };
 
     /**
      * 点击导航栏菜单时的响应事件
      */
-    const clickNav = (index: number) => {
+    const router = useRouter();
+    const clickNav = (index: number, link: string) => {
       state.activeIndex = index;
-      foldNav();
+
+      setTimeout(() => {
+        router.push({
+          path: link,
+        });
+      }, 0);
     };
 
     /** 开始显示导航栏面板 */
     const unfoldNav = () => {
+      state.btnOpen = true;
       state.showNav = true;
 
       /* 导航栏按钮 打开动画 开启 */
@@ -363,6 +369,7 @@ export default defineComponent({
      */
     const foldNav = () => {
       /* 导航栏按钮 关闭动画 开启 */
+      state.btnOpen = false;
       navCloseController.play();
       navOpenController.stop();
 
