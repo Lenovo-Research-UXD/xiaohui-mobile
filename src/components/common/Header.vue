@@ -3,9 +3,8 @@
     <!-- 导航栏开关 BEGIN -->
     <div class="icon-nav-wrapper" alt="nav" @click="clickNavHeader">
       <!-- 导航栏开关·静止态·打开按钮 -->
-      <img class="icon-nav" src="/images/common/icon-nav.svg" v-show="!state.showNav" />
-      <div class="icon-lottie" ref="navOpen" v-show="state.showNav && state.btnOpen"></div>
-      <div class="icon-lottie" ref="navClose" v-show="state.showNav && !state.btnOpen"></div>
+      <div class="icon-lottie" ref="navOpen" v-show="state.btnOpen"></div>
+      <div class="icon-lottie" ref="navClose" v-show="!state.btnOpen"></div>
     </div>
     <!-- 导航栏开关 END -->
     <div class="icon-xiaohui-wrapper">
@@ -128,7 +127,7 @@ export default defineComponent({
       showBtn: props.showBtn,
       borderBottomClass: '',
       navNameClass: '',
-      btnOpen: false,
+      btnOpen: true,
     });
 
     /** 初始样式 */
@@ -330,7 +329,7 @@ export default defineComponent({
 
     /** 点击导航栏头部的响应事件 */
     const clickNavHeader = () => {
-      state.btnOpen = !state.btnOpen;
+      state.btnOpen = state.showNav === true ? false : true;
       state.showNav === true ? foldNav() : unfoldNav();
     };
 
@@ -470,15 +469,6 @@ export default defineComponent({
     width: 44px;
     height: 44px;
     position: relative;
-    .icon-nav {
-      width: 44px;
-      height: 44px;
-      padding: 10px;
-      z-index: 10;
-      position: absolute;
-      top: 0;
-      transform: scaleY(0.8);
-    }
     .icon-lottie {
       width: 44px;
       height: 44px;
