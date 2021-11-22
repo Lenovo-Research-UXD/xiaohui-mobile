@@ -63,7 +63,7 @@ const showNav = (res: boolean) => {
   position: fixed;
   top: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
   z-index: 50;
   opacity: 1;
 
@@ -75,8 +75,8 @@ const showNav = (res: boolean) => {
     -webkit-backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
 }
 .blur-leave-active {
-  transition: backdrop-filter 0.4s ease-in-out 0.3s, opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.5s,
-    -webkit-backdrop-filter 0.4s ease-in-out 0.3s;
+  transition: backdrop-filter 0.3s ease-in-out 0.3s, opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.5s,
+    -webkit-backdrop-filter 0.3s ease-in-out 0.3s;
 }
 
 .blur-enter-from,

@@ -1,9 +1,13 @@
 <template>
   <div class="header">
+    <!-- 导航栏开关 BEGIN -->
     <div class="icon-nav-wrapper" alt="nav" @click="clickNavHeader">
-      <img class="icon-nav" src="/images/common/icon-nav@2x.png" />
-      <!-- <div class="icon-loading" ref="loading" v-show="state.showNav"></diåv> -->
+      <!-- 导航栏开关·静止态·打开按钮 -->
+      <img class="icon-nav" src="/images/common/icon-nav.svg" v-show="!state.showNav" />
+      <div class="icon-lottie" ref="navOpen" v-show="state.showNav && state.btnOpen"></div>
+      <div class="icon-lottie" ref="navClose" v-show="state.showNav && !state.btnOpen"></div>
     </div>
+    <!-- 导航栏开关 END -->
     <div class="icon-xiaohui-wrapper">
       <img class="icon-xiaohui" src="/images/common/icon-xiaohui@2x.png" alt="xiaohui" />
       <img src="/images/common/icon-beta.svg" alt="beta" class="icon-beta" />
@@ -45,7 +49,8 @@
 import { defineComponent, onMounted, ref, watch } from '@vue/runtime-core';
 import { reactive } from 'vue';
 import lottie from 'lottie-web';
-import NavLoadingLottie from '../../assets/lottie/loading/loading.json';
+import NavOpenLottie from '../../assets/lottie/navBtn/open.json';
+import NavCloseLottie from '../../assets/lottie/navBtn/close.json';
 export default defineComponent({
   name: 'Header',
   props: {
@@ -65,18 +70,26 @@ export default defineComponent({
   },
   setup(props, context) {
     /** 导航栏加载动画 */
-    const loading = ref<HTMLDivElement>(null as unknown as HTMLDivElement);
-    const navLoading = () => {
-      lottie.loadAnimation({
-        container: loading.value,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        animationData: NavLoadingLottie,
-      });
-    };
+    const navOpen = ref<HTMLDivElement>(null as unknown as HTMLDivElement); //导航栏打开按钮
+    const navClose = ref<HTMLDivElement>(null as unknown as HTMLDivElement); //导航栏关闭按钮
+
+    let navOpenController: any;
+    let navCloseController: any;
     onMounted(() => {
-      navLoading();
+      navOpenController = lottie.loadAnimation({
+        container: navOpen.value,
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        animationData: NavOpenLottie,
+      });
+      navCloseController = lottie.loadAnimation({
+        container: navClose.value,
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        animationData: NavCloseLottie,
+      });
     });
 
     const state = reactive({
@@ -115,6 +128,7 @@ export default defineComponent({
       showBtn: props.showBtn,
       borderBottomClass: '',
       navNameClass: '',
+      btnOpen: false,
     });
 
     /** 初始样式 */
@@ -316,6 +330,7 @@ export default defineComponent({
 
     /** 点击导航栏头部的响应事件 */
     const clickNavHeader = () => {
+      state.btnOpen = !state.btnOpen;
       state.showNav === true ? foldNav() : unfoldNav();
     };
 
@@ -327,10 +342,31 @@ export default defineComponent({
       foldNav();
     };
 
+    /** 开始显示导航栏面板 */
+    const unfoldNav = () => {
+      state.showNav = true;
+
+      /* 导航栏按钮 打开动画 开启 */
+      navOpenController.play();
+      navCloseController.stop();
+
+      state.borderBottomClass = 'border-bottom-animation-enter';
+      state.navNameClass = 'nav-name-animation-enter';
+      setTimeout(() => {
+        styles.line = styleActive.line;
+        styles.title = styleActive.title;
+      }, 150);
+      context.emit('showNav', state.showNav);
+    };
+
     /**
      * 关闭显示导航栏面板
      */
     const foldNav = () => {
+      /* 导航栏按钮 关闭动画 开启 */
+      navCloseController.play();
+      navOpenController.stop();
+
       state.borderBottomClass = 'border-bottom-animation-leave';
       state.navNameClass = 'nav-name-animation-leave';
       setTimeout(() => {
@@ -341,19 +377,6 @@ export default defineComponent({
         }, 450);
       }, 0);
       context.emit('showNav', false);
-    };
-
-    /** 开始显示导航栏面板 */
-    const unfoldNav = () => {
-      state.showNav = true;
-
-      state.borderBottomClass = 'border-bottom-animation-enter';
-      state.navNameClass = 'nav-name-animation-enter';
-      setTimeout(() => {
-        styles.line = styleActive.line;
-        styles.title = styleActive.title;
-      }, 150);
-      context.emit('showNav', state.showNav);
     };
 
     /**
@@ -371,11 +394,13 @@ export default defineComponent({
 
     return {
       state,
-      loading,
       styles,
       styleInit,
       styleActive,
-      navLoading,
+      navOpen,
+      navOpenController,
+      navClose,
+      navCloseController,
       clickNavHeader,
       clickNav,
       foldNav,
@@ -403,7 +428,8 @@ export default defineComponent({
   transition: opacity 0.48s ease-in-out 0.05s, transform 0.48s cubic-bezier(0.4, 0, 0.2, 1) 0.05s;
 }
 .bg-leave-active {
-  transition: opacity 0.39s ease-in-out -0.21s, transform 0.44s cubic-bezier(0.4, 0, 0.2, 1) -0.26s;
+  /* transition: opacity 0.39s ease-in-out -0.21s, transform 0.44s cubic-bezier(0.4, 0, 0.2, 1) -0.26s; */
+  transition: opacity 0.5s ease-out -0.21s, transform 0.55s cubic-bezier(0.4, 0, 0.2, 1) -0.26s;
 }
 .bg-enter-from {
   opacity: 0;
@@ -451,12 +477,21 @@ export default defineComponent({
       z-index: 10;
       position: absolute;
       top: 0;
+      transform: scaleY(0.8);
     }
-    .icon-loading {
+    .icon-lottie {
       width: 44px;
       height: 44px;
+      padding: 0 10px;
       position: absolute;
       top: 0;
+      object-fit: cover;
+      transform: scale(0.7);
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 
