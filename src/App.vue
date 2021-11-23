@@ -48,15 +48,22 @@ const showNav = (res: boolean) => {
     <div v-show="state.showNav" class="blur-layer"></div>
   </transition>
 
-  <keep-alive>
-    <router-view />
-  </keep-alive>
+  <div class="content">
+    <keep-alive>
+      <router-view />
+    </keep-alive>
+  </div>
   <Footer></Footer>
 </template>
 
 <style scoped>
 #header {
+  width: 375px;
   z-index: 100;
+}
+.content {
+  width: 375px;
+  min-height: 100vh;
 }
 .placeholder {
   width: 375px;
