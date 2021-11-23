@@ -325,6 +325,16 @@ export default defineComponent({
       state.showBtn = showBtn;
     });
 
+    /** 实时监听导航栏是否为下拉状态 对应禁用滚动事件 */
+    watch(
+      () => state.showNav,
+      curState => {
+        if (curState === true) {
+        } else {
+        }
+      }
+    );
+
     /** 点击导航栏头部的响应事件 */
     const clickNavHeader = () => {
       state.showNav === true ? foldNav() : unfoldNav();
