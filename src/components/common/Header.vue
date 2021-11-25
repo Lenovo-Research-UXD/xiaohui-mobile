@@ -554,7 +554,14 @@ export default defineComponent({
 
     font-size: 12px;
     color: $linkColor;
-    line-height: 14px;
+    line-height: 12px;
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      border: 1px solid rgba(76, 104, 255, 0.5);
+      background: rgba(255, 255, 255, 0.5);
+    }
   }
 }
 

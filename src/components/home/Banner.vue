@@ -7,9 +7,9 @@
       autoplay
       muted
       loop
+      playsinline="true"
       webkit-playsinline="true"
       x5-video-player-type="h5"
-      playsinline="true"
       preload="true"
       ref="introVideo"
     ></video>
