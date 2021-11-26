@@ -7,24 +7,24 @@ const state = reactive({
   showBtn: false,
   showNav: false,
 });
-const placeholder = ref<HTMLDivElement>(null as unknown as HTMLDivElement);
+const observer = ref<HTMLDivElement>(null as unknown as HTMLDivElement);
 /**
  * 占位符可视区域<1时 触发header显示按钮
  */
 const callback = (i: any) => {
-  if (i[0].intersectionRatio == 1) {
-    state.showBtn = false;
-  } else {
+  if (i[0].intersectionRatio <= 0.1) {
     state.showBtn = true;
+  } else {
+    state.showBtn = false;
   }
 };
 const options = {
   root: null,
-  threshold: [0, 1],
+  threshold: [0, 0.05, 0.1, 0.2],
 };
 const io = new IntersectionObserver(callback, options);
 onMounted(() => {
-  io.observe(placeholder.value);
+  io.observe(observer.value);
 });
 onUnmounted(() => {
   io.disconnect();
@@ -43,6 +43,7 @@ const showNav = (res: boolean) => {
     </div>
   </keep-alive>
   <div class="placeholder" ref="placeholder"></div>
+  <div class="observer" ref="observer"></div>
 
   <transition name="blur">
     <div v-show="state.showNav" class="blur-layer"></div>
@@ -69,6 +70,13 @@ const showNav = (res: boolean) => {
 .placeholder {
   width: 375px;
   height: 44px;
+}
+
+.observer {
+  width: 375px;
+  height: 456px;
+  position: absolute;
+  top: 0;
 }
 
 /* 点击导航栏时 主体页面的模糊效果 */
