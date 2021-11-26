@@ -25,9 +25,6 @@ const options = {
 const io = new IntersectionObserver(callback, options);
 onMounted(() => {
   io.observe(placeholder.value);
-  window.addEventListener('scroll', e => {
-    console.log(e);
-  });
 });
 onUnmounted(() => {
   io.disconnect();

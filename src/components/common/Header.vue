@@ -12,7 +12,9 @@
       <img src="/images/common/icon-beta.svg" alt="beta" class="icon-beta" />
     </div>
 
-    <div class="btn-try" v-show="state.showBtn && [1, 2, 3].includes(state.activeIndex)" @click="toDemo">免费试用</div>
+    <div class="btn-try" v-show="state.showBtn && [1, 2, 3].includes(state.activeIndex)">
+      <router-link :to="{ hash: '#copyUrl' }" append> 免费试用 </router-link>
+    </div>
   </div>
 
   <div class="nav-list" v-show="state.showNav" @click="foldNav">

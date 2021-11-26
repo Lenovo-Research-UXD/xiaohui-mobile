@@ -30,8 +30,6 @@ const devices = [
 const videoElement = document.getElementsByTagName('video');
 
 const handlePlay = (index: number) => {
-  console.log({ index });
-  console.log(videoElement);
   for (let i = 0; i < videoElement.length; i += 2) {
     Math.floor(i / 2) === index ? '' : videoElement[i].pause();
   }
