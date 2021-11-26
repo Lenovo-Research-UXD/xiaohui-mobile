@@ -56,7 +56,6 @@ const router = createRouter({
 
 // 跳转新页面时 从页面顶部显示
 router.afterEach((from, to) => {
-  console.log({ from, to });
   if (from.hash === '') {
     window.scrollTo({
       left: 0,

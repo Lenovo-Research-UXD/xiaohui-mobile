@@ -17,12 +17,14 @@ export default defineComponent({
     const state = reactive({
       showImageFullScreen: '',
     });
+
     /**
      * 获取图片资源
      */
     const getImageUrl = (name: string) => {
       return new URL(`../../assets/images/tool/${name}`, import.meta.url).href;
     };
+
     /**
      * 全屏展示图片
      * @params {string} image 图片路由
@@ -30,21 +32,33 @@ export default defineComponent({
     const getFullScreenImage = (image: string) => {
       state.showImageFullScreen = image;
     };
+
     /**
      * 关闭全屏展示图片
      */
+
     const closeFullScreenImage = () => {
       state.showImageFullScreen = '';
     };
+
+    /**
+     * 导航栏全屏时 禁用滚动事件
+     */
+    const preventDefault = (e: any) => {
+      e.preventDefault();
+    };
+
     return {
-      getImageUrl,
       state,
+      getImageUrl,
       getFullScreenImage,
       closeFullScreenImage,
+      preventDefault,
     };
   },
 });
 </script>
+
 <template>
   <div class="demo">
     <div class="title">下载壁纸</div>
@@ -63,7 +77,12 @@ export default defineComponent({
   </div>
 
   <teleport to="body">
-    <div class="modal-wrapper" v-show="state.showImageFullScreen" @click="closeFullScreenImage">
+    <div
+      class="modal-wrapper"
+      v-show="state.showImageFullScreen"
+      @click="closeFullScreenImage"
+      @touchmove.stop="preventDefault"
+    >
       <img :src="getImageUrl(state.showImageFullScreen)" alt="cover" />
     </div>
   </teleport>

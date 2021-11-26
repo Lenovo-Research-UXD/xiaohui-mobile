@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div class="nav-list" v-show="state.showNav" @click="foldNav">
+  <div class="nav-list" v-show="state.showNav" @click="foldNav" @touchmove.stop="preventDefault">
     <div class="placeholder"></div>
     <div class="nav" v-for="(item, index) in state.list" :key="item.name" @click="clickNav(index, item.link)">
       <div
@@ -425,6 +425,13 @@ export default defineComponent({
       }, 500);
     };
 
+    /**
+     * 导航栏全屏时 禁用滚动事件
+     */
+    const preventDefault = (e: any) => {
+      e.preventDefault();
+    };
+
     return {
       state,
       styles,
@@ -439,7 +446,7 @@ export default defineComponent({
       foldNav,
       unfoldNav,
       routeChange,
-      toDemo,
+      preventDefault,
     };
   },
 });
