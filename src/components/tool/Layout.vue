@@ -69,9 +69,15 @@ export default defineComponent({
       otherTools();
     });
 
+    /** test */
+    const log = () => {
+      console.log('clicked');
+    };
+
     return {
       state,
       getImageUrl,
+      log,
     };
   },
 });
@@ -92,9 +98,10 @@ export default defineComponent({
       <div class="description">
         <pre>{{ state.tool.description }}</pre>
       </div>
-      <router-link :to="state.tool.link + '/#copyUrl'" append>
-        <div class="btn-more">免费试用</div>
-      </router-link>
+
+      <div class="btn-more" @click="log">
+        <router-link :to="{ hash: '#copyUrl' }" append> 免费试用 </router-link>
+      </div>
     </div>
     <!-- 三组介绍图文 -->
     <div class="details-wrapper">
