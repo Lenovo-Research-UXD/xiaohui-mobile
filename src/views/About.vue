@@ -36,7 +36,7 @@ const copyUrlMsg = '了解更多资讯';
 
   .history-wrapper {
     width: 375px;
-    height: 1830px;
+    /* height: 1830px; */
     padding: 0 48px 100px 30px;
   }
 

@@ -77,6 +77,7 @@ const showNav = (res: boolean) => {
   height: 456px;
   position: absolute;
   top: 0;
+  z-index: -1;
 }
 
 /* 点击导航栏时 主体页面的模糊效果 */

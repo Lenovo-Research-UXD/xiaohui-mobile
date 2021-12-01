@@ -67,6 +67,11 @@ export default defineComponent({
         label: '首次与大牌合作',
         detail: '小绘智能设计作品成为motorola edge s手机官方壁纸',
       },
+      {
+        date: '2021.11',
+        label: '商业应用再突破',
+        detail: 'ThinkPad 全球黑五促销官网上线',
+      },
     ];
     return {
       history,
@@ -78,7 +83,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .historys-wrapper {
   width: 296px;
-  height: 1712px;
+  height: calc(1712px + 170px);
 
   display: flex;
   flex-direction: column;
@@ -92,7 +97,7 @@ export default defineComponent({
 
   .historys {
     width: 296px;
-    height: 1613px;
+    height: calc(1613px + 170px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -2,6 +2,8 @@
 import { defineComponent, PropType } from '@vue/runtime-core';
 import { reactive } from 'vue';
 import { DemoAssets } from '../../types/index';
+import isAndroid from '../../utils/isAndroid';
+import toFullVideo from '../../utils/toFullVideo';
 export default defineComponent({
   name: 'DemoVideo',
   props: {
@@ -30,11 +32,24 @@ export default defineComponent({
      * 播放视频
      */
     const playVideo = (index: number) => {
+      // 选中态的改变
       if (state.activeIndex !== -1) {
         state.videoRefs[state.activeIndex].pause();
       }
       state.activeIndex = index;
-      state.videoRefs[index].play();
+      // 播放视频
+      // state.videoRefs[index].play();
+      // 全屏播放 仅针对Android实现
+      if (isAndroid()) {
+        let promise = toFullVideo(state.videoRefs[index]);
+        promise
+          .then(() => state.videoRefs[index].play())
+          .catch((err: any) => {
+            console.log(err, '无法全屏播放');
+          });
+      } else {
+        state.videoRefs[index].play();
+      }
     };
     /**
      * 暂停视频
@@ -42,6 +57,7 @@ export default defineComponent({
     const pause = (index: number) => {
       if (state.activeIndex === index) {
         state.videoRefs[state.activeIndex].pause();
+        if (isAndroid()) document.exitFullscreen();
         state.activeIndex = -1;
       }
     };
@@ -57,7 +73,14 @@ export default defineComponent({
      * 结束播放时再次显示播放按钮
      */
     const completeVideo = () => {
-      state.activeIndex = -1;
+      // state.activeIndex = -1;
+      // 退出全屏播放 仅针对Android实现
+      if (isAndroid()) {
+        document.exitFullscreen();
+        state.activeIndex = -1;
+      } else {
+        state.activeIndex = -1;
+      }
     };
     return {
       state,
