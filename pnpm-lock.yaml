@@ -379,7 +379,7 @@ packages:
     dev: true
 
   /esbuild-android-arm64/0.13.13:
-    resolution: {integrity: sha512-T02aneWWguJrF082jZworjU6vm8f4UQ+IH2K3HREtlqoY9voiJUwHLRL6khRlsNLzVglqgqb7a3HfGx7hAADCQ==}
+    resolution: {integrity: sha512-T02aneWWguJrF082jZworjU6vm8f4UQ+IH2K3HREtlqoY9voiJUwHLRL6khRlsNLzVglqgqb7a3HfGx7hAADCQ==, tarball: esbuild-android-arm64/download/esbuild-android-arm64-0.13.13.tgz}
     cpu: [arm64]
     os: [android]
     requiresBuild: true
@@ -387,7 +387,7 @@ packages:
     optional: true
 
   /esbuild-darwin-64/0.13.13:
-    resolution: {integrity: sha512-wkaiGAsN/09X9kDlkxFfbbIgR78SNjMOfUhoel3CqKBDsi9uZhw7HBNHNxTzYUK8X8LAKFpbODgcRB3b/I8gHA==}
+    resolution: {integrity: sha512-wkaiGAsN/09X9kDlkxFfbbIgR78SNjMOfUhoel3CqKBDsi9uZhw7HBNHNxTzYUK8X8LAKFpbODgcRB3b/I8gHA==, tarball: esbuild-darwin-64/download/esbuild-darwin-64-0.13.13.tgz?cache=0&sync_timestamp=1637498583993&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fesbuild-darwin-64%2Fdownload%2Fesbuild-darwin-64-0.13.13.tgz}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
@@ -395,7 +395,7 @@ packages:
     optional: true
 
   /esbuild-darwin-arm64/0.13.13:
-    resolution: {integrity: sha512-b02/nNKGSV85Gw9pUCI5B48AYjk0vFggDeom0S6QMP/cEDtjSh1WVfoIFNAaLA0MHWfue8KBwoGVsN7rBshs4g==}
+    resolution: {integrity: sha512-b02/nNKGSV85Gw9pUCI5B48AYjk0vFggDeom0S6QMP/cEDtjSh1WVfoIFNAaLA0MHWfue8KBwoGVsN7rBshs4g==, tarball: esbuild-darwin-arm64/download/esbuild-darwin-arm64-0.13.13.tgz}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
@@ -403,7 +403,7 @@ packages:
     optional: true
 
   /esbuild-freebsd-64/0.13.13:
-    resolution: {integrity: sha512-ALgXYNYDzk9YPVk80A+G4vz2D22Gv4j4y25exDBGgqTcwrVQP8rf/rjwUjHoh9apP76oLbUZTmUmvCMuTI1V9A==}
+    resolution: {integrity: sha512-ALgXYNYDzk9YPVk80A+G4vz2D22Gv4j4y25exDBGgqTcwrVQP8rf/rjwUjHoh9apP76oLbUZTmUmvCMuTI1V9A==, tarball: esbuild-freebsd-64/download/esbuild-freebsd-64-0.13.13.tgz}
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
@@ -411,7 +411,7 @@ packages:
     optional: true
 
   /esbuild-freebsd-arm64/0.13.13:
-    resolution: {integrity: sha512-uFvkCpsZ1yqWQuonw5T1WZ4j59xP/PCvtu6I4pbLejhNo4nwjW6YalqnBvBSORq5/Ifo9S/wsIlVHzkzEwdtlw==}
+    resolution: {integrity: sha512-uFvkCpsZ1yqWQuonw5T1WZ4j59xP/PCvtu6I4pbLejhNo4nwjW6YalqnBvBSORq5/Ifo9S/wsIlVHzkzEwdtlw==, tarball: esbuild-freebsd-arm64/download/esbuild-freebsd-arm64-0.13.13.tgz}
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
@@ -419,7 +419,7 @@ packages:
     optional: true
 
   /esbuild-linux-32/0.13.13:
-    resolution: {integrity: sha512-yxR9BBwEPs9acVEwTrEE2JJNHYVuPQC9YGjRfbNqtyfK/vVBQYuw8JaeRFAvFs3pVJdQD0C2BNP4q9d62SCP4w==}
+    resolution: {integrity: sha512-yxR9BBwEPs9acVEwTrEE2JJNHYVuPQC9YGjRfbNqtyfK/vVBQYuw8JaeRFAvFs3pVJdQD0C2BNP4q9d62SCP4w==, tarball: esbuild-linux-32/download/esbuild-linux-32-0.13.13.tgz}
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
@@ -427,7 +427,7 @@ packages:
     optional: true
 
   /esbuild-linux-64/0.13.13:
-    resolution: {integrity: sha512-kzhjlrlJ+6ESRB/n12WTGll94+y+HFeyoWsOrLo/Si0s0f+Vip4b8vlnG0GSiS6JTsWYAtGHReGczFOaETlKIw==}
+    resolution: {integrity: sha512-kzhjlrlJ+6ESRB/n12WTGll94+y+HFeyoWsOrLo/Si0s0f+Vip4b8vlnG0GSiS6JTsWYAtGHReGczFOaETlKIw==, tarball: esbuild-linux-64/download/esbuild-linux-64-0.13.13.tgz}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
@@ -435,7 +435,7 @@ packages:
     optional: true
 
   /esbuild-linux-arm/0.13.13:
-    resolution: {integrity: sha512-hXub4pcEds+U1TfvLp1maJ+GHRw7oizvzbGRdUvVDwtITtjq8qpHV5Q5hWNNn6Q+b3b2UxF03JcgnpzCw96nUQ==}
+    resolution: {integrity: sha512-hXub4pcEds+U1TfvLp1maJ+GHRw7oizvzbGRdUvVDwtITtjq8qpHV5Q5hWNNn6Q+b3b2UxF03JcgnpzCw96nUQ==, tarball: esbuild-linux-arm/download/esbuild-linux-arm-0.13.13.tgz}
     cpu: [arm]
     os: [linux]
     requiresBuild: true
@@ -443,7 +443,7 @@ packages:
     optional: true
 
   /esbuild-linux-arm64/0.13.13:
-    resolution: {integrity: sha512-KMrEfnVbmmJxT3vfTnPv/AiXpBFbbyExH13BsUGy1HZRPFMi5Gev5gk8kJIZCQSRfNR17aqq8sO5Crm2KpZkng==}
+    resolution: {integrity: sha512-KMrEfnVbmmJxT3vfTnPv/AiXpBFbbyExH13BsUGy1HZRPFMi5Gev5gk8kJIZCQSRfNR17aqq8sO5Crm2KpZkng==, tarball: esbuild-linux-arm64/download/esbuild-linux-arm64-0.13.13.tgz}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
@@ -451,7 +451,7 @@ packages:
     optional: true
 
   /esbuild-linux-mips64le/0.13.13:
-    resolution: {integrity: sha512-cJT9O1LYljqnnqlHaS0hdG73t7hHzF3zcN0BPsjvBq+5Ad47VJun+/IG4inPhk8ta0aEDK6LdP+F9299xa483w==}
+    resolution: {integrity: sha512-cJT9O1LYljqnnqlHaS0hdG73t7hHzF3zcN0BPsjvBq+5Ad47VJun+/IG4inPhk8ta0aEDK6LdP+F9299xa483w==, tarball: esbuild-linux-mips64le/download/esbuild-linux-mips64le-0.13.13.tgz}
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
@@ -459,7 +459,7 @@ packages:
     optional: true
 
   /esbuild-linux-ppc64le/0.13.13:
-    resolution: {integrity: sha512-+rghW8st6/7O6QJqAjVK3eXzKkZqYAw6LgHv7yTMiJ6ASnNvghSeOcIvXFep3W2oaJc35SgSPf21Ugh0o777qQ==}
+    resolution: {integrity: sha512-+rghW8st6/7O6QJqAjVK3eXzKkZqYAw6LgHv7yTMiJ6ASnNvghSeOcIvXFep3W2oaJc35SgSPf21Ugh0o777qQ==, tarball: esbuild-linux-ppc64le/download/esbuild-linux-ppc64le-0.13.13.tgz}
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
@@ -467,7 +467,7 @@ packages:
     optional: true
 
   /esbuild-netbsd-64/0.13.13:
-    resolution: {integrity: sha512-A/B7rwmzPdzF8c3mht5TukbnNwY5qMJqes09ou0RSzA5/jm7Jwl/8z853ofujTFOLhkNHUf002EAgokzSgEMpQ==}
+    resolution: {integrity: sha512-A/B7rwmzPdzF8c3mht5TukbnNwY5qMJqes09ou0RSzA5/jm7Jwl/8z853ofujTFOLhkNHUf002EAgokzSgEMpQ==, tarball: esbuild-netbsd-64/download/esbuild-netbsd-64-0.13.13.tgz}
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
@@ -475,7 +475,7 @@ packages:
     optional: true
 
   /esbuild-openbsd-64/0.13.13:
-    resolution: {integrity: sha512-szwtuRA4rXKT3BbwoGpsff6G7nGxdKgUbW9LQo6nm0TVCCjDNDC/LXxT994duIW8Tyq04xZzzZSW7x7ttDiw1w==}
+    resolution: {integrity: sha512-szwtuRA4rXKT3BbwoGpsff6G7nGxdKgUbW9LQo6nm0TVCCjDNDC/LXxT994duIW8Tyq04xZzzZSW7x7ttDiw1w==, tarball: esbuild-openbsd-64/download/esbuild-openbsd-64-0.13.13.tgz}
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
@@ -483,7 +483,7 @@ packages:
     optional: true
 
   /esbuild-sunos-64/0.13.13:
-    resolution: {integrity: sha512-ihyds9O48tVOYF48iaHYUK/boU5zRaLOXFS+OOL3ceD39AyHo46HVmsJLc7A2ez0AxNZCxuhu+P9OxfPfycTYQ==}
+    resolution: {integrity: sha512-ihyds9O48tVOYF48iaHYUK/boU5zRaLOXFS+OOL3ceD39AyHo46HVmsJLc7A2ez0AxNZCxuhu+P9OxfPfycTYQ==, tarball: esbuild-sunos-64/download/esbuild-sunos-64-0.13.13.tgz}
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
@@ -491,7 +491,7 @@ packages:
     optional: true
 
   /esbuild-windows-32/0.13.13:
-    resolution: {integrity: sha512-h2RTYwpG4ldGVJlbmORObmilzL8EECy8BFiF8trWE1ZPHLpECE9//J3Bi+W3eDUuv/TqUbiNpGrq4t/odbayUw==}
+    resolution: {integrity: sha512-h2RTYwpG4ldGVJlbmORObmilzL8EECy8BFiF8trWE1ZPHLpECE9//J3Bi+W3eDUuv/TqUbiNpGrq4t/odbayUw==, tarball: esbuild-windows-32/download/esbuild-windows-32-0.13.13.tgz}
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
@@ -499,7 +499,7 @@ packages:
     optional: true
 
   /esbuild-windows-64/0.13.13:
-    resolution: {integrity: sha512-oMrgjP4CjONvDHe7IZXHrMk3wX5Lof/IwFEIbwbhgbXGBaN2dke9PkViTiXC3zGJSGpMvATXVplEhlInJ0drHA==}
+    resolution: {integrity: sha512-oMrgjP4CjONvDHe7IZXHrMk3wX5Lof/IwFEIbwbhgbXGBaN2dke9PkViTiXC3zGJSGpMvATXVplEhlInJ0drHA==, tarball: esbuild-windows-64/download/esbuild-windows-64-0.13.13.tgz}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
@@ -507,7 +507,7 @@ packages:
     optional: true
 
   /esbuild-windows-arm64/0.13.13:
-    resolution: {integrity: sha512-6fsDfTuTvltYB5k+QPah/x7LrI2+OLAJLE3bWLDiZI6E8wXMQU+wLqtEO/U/RvJgVY1loPs5eMpUBpVajczh1A==}
+    resolution: {integrity: sha512-6fsDfTuTvltYB5k+QPah/x7LrI2+OLAJLE3bWLDiZI6E8wXMQU+wLqtEO/U/RvJgVY1loPs5eMpUBpVajczh1A==, tarball: esbuild-windows-arm64/download/esbuild-windows-arm64-0.13.13.tgz}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
@@ -558,7 +558,7 @@ packages:
     dev: true
 
   /fsevents/2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    resolution: {integrity: sha1-ilJveLj99GI7cJ4Ll1xSwkwC/Ro=, tarball: fsevents/download/fsevents-2.3.2.tgz}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
+import scroll from '../utils/scroll';
 
 const routes = [
   {
@@ -45,11 +46,8 @@ const router = createRouter({
   routes,
   scrollBehavior(to) {
     if (to.hash) {
-      return {
-        el: to.hash,
-        behavior: 'smooth',
-        top: 40,
-      };
+      // 走自定义平滑滚动
+      scroll(to.hash);
     }
   },
 });
