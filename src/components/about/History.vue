@@ -70,7 +70,7 @@ export default defineComponent({
       {
         date: '2021.11',
         label: '商业应用再突破',
-        detail: 'ThinkPad 全球黑五促销官网上线',
+        detail: '小绘创意脑图工具生成的素材成为ThinkPad黑五促销官网宣传图',
       },
     ];
     return {
