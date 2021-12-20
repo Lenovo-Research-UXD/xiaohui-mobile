@@ -2,6 +2,8 @@
   <div class="banner">
     <div class="loading" ref="loading" v-show="state.isLoading"></div>
     <video
+      class="banner-video"
+      v-if="isIOSorChrome()"
       src="/videos/home-banner.mp4"
       poster="/images/home/cover-intro@2x.png"
       autoplay
@@ -13,6 +15,8 @@
       preload="true"
       ref="introVideo"
     ></video>
+    <img class="banner-image" src="/images/home/cover-intro@2x.png" alt="banner" v-else />
+    <!-- <canvas ref="canvas" id="video-to-canvas"></canvas> -->
     <div class="content">
       <div class="title">小绘，设计突破想象</div>
       <div class="description">突破想象的图形设计工具集，使用AI生成技术帮助你轻松搞定设计工作</div>
@@ -22,15 +26,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watchEffect } from '@vue/runtime-core';
+import { defineComponent, onUnmounted, watchEffect } from '@vue/runtime-core';
 import { onMounted, reactive, ref, watch } from 'vue';
 import lottie from 'lottie-web';
 import Loading from '../../assets/lottie/loading/loading.json';
+import isIOSorChrome from '../../utils/isIOSorChrome';
 export default defineComponent({
   name: 'Banner',
   setup() {
     const state = reactive({
       isLoading: false,
+      scale: document.documentElement.clientWidth / 375,
     });
 
     /**
@@ -47,18 +53,51 @@ export default defineComponent({
       });
     };
     /**
-     * 加载视频
+     * video转canvas
      */
-    const introVideo = ref<HTMLVideoElement>(null as unknown as HTMLVideoElement);
+    const initCanvas = () => {
+      const canvas: HTMLCanvasElement = document.getElementById('video-to-canvas') as HTMLCanvasElement;
+      console.log(canvas);
+      canvas.width = 375 * state.scale;
+      canvas.height = 800 * state.scale;
+      const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+
+      const video: HTMLVideoElement = document.createElement('video');
+      video.src = '/mobile/home-banner.mp4';
+      video.muted = true;
+      video.loop = true;
+      video.autoplay = true;
+      video.width = 1;
+      video.height = 1;
+      video.style.opacity = '0';
+      video.style.position = 'fixed';
+      video.style.pointerEvents = 'none';
+      if (!document.querySelector('video')) {
+        console.log('has video');
+        document.body.appendChild(video);
+      }
+      const drawCanvas = () => {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        // console.log({ ctx });
+        requestAnimationFrame(drawCanvas);
+      };
+
+      video.play();
+      drawCanvas();
+    };
 
     onMounted(() => {
       loadingAnimation();
+      // if (isAndroid()) {
+      // initCanvas();
+      // }
     });
 
     return {
       loading,
-      introVideo,
       state,
+      initCanvas,
+      isIOSorChrome,
     };
   },
 });
@@ -87,7 +126,8 @@ video::-webkit-media-controls-enclosure {
     z-index: 10;
   }
 
-  video {
+  .banner-video,
+  .banner-image {
     width: 375px;
     position: absolute;
   }

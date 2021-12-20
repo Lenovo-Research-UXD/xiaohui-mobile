@@ -575,7 +575,6 @@ export default defineComponent({
 }
 
 .nav-list {
-  /* display: none; */
   z-index: 100;
   position: fixed;
   width: 375px;
