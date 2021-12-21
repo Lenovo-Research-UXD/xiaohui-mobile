@@ -57,11 +57,12 @@ const getImageUrl = function (name: string) {
   justify-content: space-between;
   .api {
     width: 315px;
-    height: 433px;
+    min-height: 433px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.8);
 
     .title {
+      height: 20px;
       @include title;
     }
 
@@ -71,7 +72,7 @@ const getImageUrl = function (name: string) {
     }
 
     .cover {
-      widtåh: 275px;
+      width: 275px;
       height: 275px;
     }
   }
