@@ -25,6 +25,11 @@ const routes = [
     component: () => import('../views/ToolIink.vue'),
   },
   {
+    path: '/tool-upscaler',
+    name: 'tool',
+    component: () => import('../views/ToolUpscaler.vue'),
+  },
+  {
     path: '/device',
     name: 'device',
     component: () => import('../views/Device.vue'),

@@ -24,6 +24,12 @@ const tools: Array<ToolCard> = [
     cover: 'common/cover-iink@2x.png',
     link: '/tool-iink',
   },
+  {
+    title: '像素增强工具',
+    description: '不再被图片尺寸和清晰度束缚，无损放大，高清无忧',
+    cover: 'common/cover-upscaler@2x.png',
+    link: '/tool-upscaler',
+  },
 ];
 const otherPages = [
   {
@@ -92,7 +98,7 @@ const getImageUrl = function (name: string) {
     top: 0;
     z-index: 10;
     width: 375px;
-    height: 1509px;
+    height: 1994px;
     padding: 44px 0 40px 0;
     display: flex;
     flex-direction: column;

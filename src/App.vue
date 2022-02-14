@@ -66,6 +66,7 @@ const showNav = (res: boolean) => {
 .content {
   width: 375px;
   min-height: 100vh;
+  overflow: hidden;
 }
 .placeholder {
   width: 375px;

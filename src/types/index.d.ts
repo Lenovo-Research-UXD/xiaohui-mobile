@@ -28,7 +28,7 @@ export interface ToolLayout {
   link: string;
   details: Array<ToolDetail>;
   images?: Array<string>;
-  assets?: Array<DemoAssets>;
+  assets?: Array<DemoAssets> | Array<UpscalerDemoAssets>;
 }
 
 /**
@@ -37,4 +37,12 @@ export interface ToolLayout {
 export interface DemoAssets {
   cover: string;
   video: string;
+}
+
+/**
+ * DemoAssets 像素增强工具demo所需的数据类型
+ */
+export interface UpscalerDemoAssets {
+  clear: string;
+  unclear: string;
 }

@@ -4,6 +4,7 @@ import CopyUrl from '../../components/common/CopyUrl.vue';
 import Card from '../common/Card.vue';
 import DemoVideo from './DemoVideo.vue';
 import DemoImage from './DemoImage.vue';
+import DemoUpscaler from './DemoUpscaler.vue'
 
 import { ToolLayout, ToolCard } from '../../types/index';
 import { defineComponent, onMounted, PropType, reactive } from 'vue';
@@ -16,6 +17,7 @@ export default defineComponent({
     Card: Card,
     DemoVideo: DemoVideo,
     DemoImage: DemoImage,
+    DemoUpscaler: DemoUpscaler
   },
   props: {
     tool: {
@@ -42,6 +44,13 @@ export default defineComponent({
         description: '大师级的水墨创意设计，高清细节，随心而韵',
         cover: 'common/cover-iink@2x.png',
         link: '/tool-iink',
+      },
+      {
+        title: '像素增强工具',
+        description: '不再被图片尺寸和清晰度束缚，无损放大，高清无忧',
+        // FIXME:
+        cover: 'common/cover-iink@2x.png',
+        link: '/tool-upscaler',
       },
     ];
 
@@ -122,6 +131,9 @@ export default defineComponent({
         :toolName="state.tool.title"
         :assets="state.tool.assets"
       ></DemoVideo>
+      <DemoUpscaler v-else-if="state.tool.title == '像素增强工具'" 
+        :toolName="state.tool.title"
+        :assets="state.tool.assets"></DemoUpscaler>
       <DemoImage v-else :toolName="state.tool.title" :images="state.tool.images"></DemoImage>
     </div>
     <!-- 复制链接 -->
@@ -236,7 +248,7 @@ export default defineComponent({
 
   .card-wrapper {
     width: 375px;
-    height: 1040px;
+    height: 1527px;
     padding-bottom: 100px;
     display: flex;
     flex-direction: column;
