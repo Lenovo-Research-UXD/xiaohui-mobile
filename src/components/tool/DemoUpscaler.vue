@@ -21,7 +21,7 @@
       <div class="compare-image">
         <!-- 左侧图 -->
         <img
-          :src="demos[state.activeIndex].imageClear"
+          :src="getImageUrl(demos[state.activeIndex].imageClear)"
           alt="image-clear"
           :style="{
             clip: 'rect(auto, ' + state.sliderLeft + 'px, auto, auto)',
@@ -30,7 +30,7 @@
           ref="leftImageRef"
         />
         <!-- 右侧图 -->
-        <img :src="demos[state.activeIndex].imageUnclear" alt="image-unclear" class="right-image" ref="rightImageRef" />
+        <img :src="getImageUrl(demos[state.activeIndex].imageUnclear)" alt="image-unclear" class="right-image" ref="rightImageRef" />
         <!-- 滑动条 -->
         <div class="slider" :style="{ transform: 'translate3d(' + state.sliderLeft + 'px,0,0)' }">
           <img src="/images/tool/upscaler-demo-slider@2x.png" alt="slider" @touchstart.capture="startSliding">
@@ -56,30 +56,38 @@ export default defineComponent({
     const demos = [
       {
         title: '风景',
-        imageClear: '/images/tool/upscaler-demo-clear-5@2x.png',
-        imageUnclear: '/images/tool/upscaler-demo-unclear-5@2x.png',
+        imageClear: 'upscaler-demo-clear-5@2x.png',
+        imageUnclear: 'upscaler-demo-unclear-5@2x.png',
       },
       {
         title: '卡通',
-        imageClear: '/images/tool/upscaler-demo-clear-2@2x.png',
-        imageUnclear: '/images/tool/upscaler-demo-unclear-2@2x.png',
+        imageClear: 'upscaler-demo-clear-2@2x.png',
+        imageUnclear: 'upscaler-demo-unclear-2@2x.png',
       },
       {
         title: '抽象',
-        imageClear: '/images/tool/upscaler-demo-clear-3@2x.png',
-        imageUnclear: '/images/tool/upscaler-demo-unclear-3@2x.png',
+        imageClear: 'upscaler-demo-clear-3@2x.png',
+        imageUnclear: 'upscaler-demo-unclear-3@2x.png',
       },
       {
         title: '图标',
-        imageClear: '/images/tool/upscaler-demo-clear-4@2x.png',
-        imageUnclear: '/images/tool/upscaler-demo-unclear-4@2x.png',
+        imageClear: 'upscaler-demo-clear-4@2x.png',
+        imageUnclear: 'upscaler-demo-unclear-4@2x.png',
       },
       {
         title: '建筑',
-        imageClear: '/images/tool/upscaler-demo-clear-1@2x.png',
-        imageUnclear: '/images/tool/upscaler-demo-unclear-1@2x.png',
+        imageClear: 'upscaler-demo-clear-1@2x.png',
+        imageUnclear: 'upscaler-demo-unclear-1@2x.png',
       },
     ];
+
+    /**
+     * 获取图片路由
+     *  
+     */
+    const getImageUrl = (name: string) => {
+      return new URL(`../../assets/images/tool/${name}`, import.meta.url).href;
+    };
 
     /**
      * 开始滑动时
@@ -100,6 +108,7 @@ export default defineComponent({
      * 滑动过程中 更新滑轮位置
      */
     const updateSliderPosition = (event: any) => {
+      event.preventDefault();
       if (state.isSliding === false) return;
 
       const e = event || window.event;
@@ -134,6 +143,7 @@ export default defineComponent({
       startSliding,
       updateSliderPosition,
       finishSliding,
+      getImageUrl
     };
   },
 });

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Layout from '../components/tool/Layout.vue';
-import { ToolLayout, ToolDetail, UpscalerDemoAssets } from '../types/index';
+import { ToolLayout, ToolDetail, DemoAssets } from '../types/index';
 const tool: ToolLayout = {
   video: 'upscaler.mp4',
   cover: 'tool/upscaler-cover@2x.png',
@@ -45,7 +45,7 @@ const tool: ToolLayout = {
       clear: 'upscaler-demo-clear-1@2x.png',
       unclear: 'upscaler-demo-unclear-1@2x.png',
     },
-  ] as Array<UpscalerDemoAssets>
+  ] as Array<DemoAssets>
 };
 </script>
 

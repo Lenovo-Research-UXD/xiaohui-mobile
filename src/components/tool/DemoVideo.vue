@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from '@vue/runtime-core';
 import { reactive } from 'vue';
-import { DemoAssets } from '../../types/index';
+import { VideoDemoAssets } from '../../types/index';
 import isAndroid from '../../utils/isAndroid';
 import toFullVideo from '../../utils/toFullVideo';
 export default defineComponent({
@@ -12,7 +12,7 @@ export default defineComponent({
       default: '',
     },
     assets: {
-      type: Object as PropType<Array<DemoAssets>>,
+      type: Array as PropType<Array<VideoDemoAssets>>,
       default: [],
     },
   },
@@ -106,7 +106,7 @@ export default defineComponent({
           :ref="setItemRef"
           x5-video-player-type="h5"
           x5-video-player-fullscreen="true"
-          x5-video-orientation="portraint"
+          x5-video-orientation="portrait"
           @ended="completeVideo"
           @click="pause(index)"
           @pause="pause(index)"

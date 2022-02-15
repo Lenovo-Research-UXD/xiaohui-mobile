@@ -1,5 +1,8 @@
 {
-    "cSpell.words": ["vite"],
+    "cSpell.words": [
+        "Upscaler",
+        "vite"
+    ],
     "[json{c}]": {
         "editor.quickSuggestions": {
             "strings": true
