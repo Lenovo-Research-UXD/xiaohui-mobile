@@ -56,8 +56,8 @@ export default defineComponent({
     const demos = [
       {
         title: '风景',
-        imageClear: '/images/tool/upscaler-demo-clear-1@2x.png',
-        imageUnclear: '/images/tool/upscaler-demo-unclear-1@2x.png',
+        imageClear: '/images/tool/upscaler-demo-clear-5@2x.png',
+        imageUnclear: '/images/tool/upscaler-demo-unclear-5@2x.png',
       },
       {
         title: '卡通',
@@ -76,8 +76,8 @@ export default defineComponent({
       },
       {
         title: '建筑',
-        imageClear: '/images/tool/upscaler-demo-clear-5@2x.png',
-        imageUnclear: '/images/tool/upscaler-demo-unclear-5@2x.png',
+        imageClear: '/images/tool/upscaler-demo-clear-1@2x.png',
+        imageUnclear: '/images/tool/upscaler-demo-unclear-1@2x.png',
       },
     ];
 
