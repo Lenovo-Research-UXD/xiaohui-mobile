@@ -21,12 +21,12 @@ const routes = [
   },
   {
     path: '/tool-iink',
-    name: 'tool',
+    name: 'tool-iink',
     component: () => import('../views/ToolIink.vue'),
   },
   {
     path: '/tool-upscaler',
-    name: 'tool',
+    name: 'tool-upscaler',
     component: () => import('../views/ToolUpscaler.vue'),
   },
   {

@@ -378,7 +378,6 @@ export default defineComponent({
     const route = useRoute();
     const clickNav = (index: number, link: string) => {
       state.activeIndex = index;
-
       setTimeout(() => {
         router.push({
           path: link,

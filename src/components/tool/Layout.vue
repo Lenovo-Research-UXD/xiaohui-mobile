@@ -48,7 +48,6 @@ export default defineComponent({
       {
         title: '像素增强工具',
         description: '不再被图片尺寸和清晰度束缚，无损放大，高清无忧',
-        // FIXME:
         cover: 'common/cover-upscaler@2x.png',
         link: '/tool-upscaler',
       },
