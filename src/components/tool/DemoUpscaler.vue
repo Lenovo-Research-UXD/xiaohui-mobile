@@ -179,13 +179,11 @@ export default defineComponent({
       &:hover,
       &:active {
         color: #4c68ff;
-        text-decoration:underline #4c68ff;
       }
     }
 
     .type-active {
       color: #4c68ff;
-      text-decoration:underline #4c68ff;
     }
   }
 
@@ -266,7 +264,8 @@ export default defineComponent({
       }
 
       .slider {
-        width:1px;
+        width: 1px;
+        height: 228px;
         z-index: 20;
         position: absolute;
         top: -6px;
@@ -274,11 +273,11 @@ export default defineComponent({
         overflow: visible;
 
         img {
-          width: 25px;
-          height: 230px;
+          width: 42px;
+          height: 232px;
           opacity: 1;
           position: absolute;
-          transform: translateX(-45%);
+          transform: translate3d(-50%,0,0);
           z-index: 30;
         }
       }

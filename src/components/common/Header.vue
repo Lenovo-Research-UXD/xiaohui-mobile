@@ -12,7 +12,8 @@
       <img src="/images/common/icon-beta.svg" alt="beta" class="icon-beta" />
     </div>
 
-    <div class="btn-try" v-show="state.showBtn && [1, 2, 3].includes(state.activeIndex)">
+    <!-- TODO: 如果新增工具，需要在下一行 对于activeIndex的判断里 增加新工具的索引 -->
+    <div class="btn-try" v-show="state.showBtn && [1, 2, 3, 4].includes(state.activeIndex)">
       <router-link :to="{ hash: '#copyUrl' }" append> 免费试用 </router-link>
     </div>
   </div>
@@ -110,6 +111,10 @@ export default defineComponent({
           link: '/tool-iink',
         },
         {
+          name: '像素增强工具',
+          link: '/tool-upscaler',
+        },
+        {
           name: '智能互动装置',
           link: '/device',
         },
@@ -141,6 +146,10 @@ export default defineComponent({
           opacity: 0,
         },
         {
+          bottom: -30, 
+          opacity: 0,
+        },
+        {
           bottom: -30,
           opacity: 0,
         },
@@ -168,6 +177,10 @@ export default defineComponent({
         },
         {
           bottom: -20,
+          opacity: 0,
+        },
+        {
+          bottom: -40,
           opacity: 0,
         },
         {
@@ -224,8 +237,16 @@ export default defineComponent({
           bottom: 0,
           opacity: 1,
         },
+        {
+          bottom: 0,
+          opacity: 1,
+        },
       ],
       title: [
+        {
+          bottom: 0,
+          opacity: 1,
+        },
         {
           bottom: 0,
           opacity: 1,
@@ -277,6 +298,10 @@ export default defineComponent({
           opacity: 0,
         },
         {
+          bottom: -30,
+          opacity: 0,
+        },
+        {
           bottom: -38,
           opacity: 0,
         },
@@ -296,6 +321,10 @@ export default defineComponent({
         },
         {
           bottom: -20,
+          opacity: 0,
+        },
+        {
+          bottom: -40,
           opacity: 0,
         },
         {
@@ -707,6 +736,21 @@ export default defineComponent({
       }
       .border-bottom-animation-leave {
         transition: transform 0.2s ease-in-out 0.05s, opacity 0.2s ease-in-out 0.05s;
+      }
+    }
+
+    &:nth-of-type(9) {
+      .nav-name-animation-enter {
+        transition: transform 0.3s ease-in-out 0.41s, opacity 0.3s ease-in-out 0.41s;
+      }
+      .nav-name-animation-leave {
+        transition: transform 0.25s ease-in-out 0.06s, opacity 0.2s ease-in-out 0.1s;
+      }
+      .border-bottom-animation-enter {
+        transition: transform 0.2s ease-in-out 0.45s, opacity 0.2s ease-in-out 0.45s;
+      }
+      .border-bottom-animation-leave {
+        transition: transform 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
       }
     }
 

@@ -2,9 +2,8 @@
 import Layout from '../components/tool/Layout.vue';
 import { ToolLayout, ToolDetail, UpscalerDemoAssets } from '../types/index';
 const tool: ToolLayout = {
-  // FIXME:
-  video: 'animation.mp4',
-  cover: 'tool/animation-cover@2x.png',
+  video: 'upscaler.mp4',
+  cover: 'tool/upscaler-cover@2x.png',
   title: '像素增强工具',
   description: '不再被图片尺寸和清晰度束缚\n无损放大，高清无忧',
   link: '/tool-upscaler',
