@@ -1,11 +1,10 @@
 {
   "name": "xiaohui-mobile",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "deploy": "npm run build && scp -r ./mobile infomgr@10.120.16.111:/home/infomgr",
-    "deploy:test": "npm run build && scp -r ./mobile root@121.5.251.210:/home/lighthouse/www",
     "serve": "vite preview"
   },
   "dependencies": {
