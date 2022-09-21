@@ -1,26 +1,62 @@
 <template>
   <div class="header">
     <!-- 导航栏开关 BEGIN -->
-    <div class="icon-nav-wrapper" alt="nav" @click="clickNavHeader">
+    <div
+      class="icon-nav-wrapper"
+      alt="nav"
+      @click="clickNavHeader"
+    >
       <!-- 导航栏开关·静止态·打开按钮 -->
-      <div class="icon-lottie" ref="navOpen" v-show="state.btnOpen"></div>
-      <div class="icon-lottie" ref="navClose" v-show="!state.btnOpen"></div>
+      <div
+        class="icon-lottie"
+        ref="navOpen"
+        v-show="state.btnOpen"
+      ></div>
+      <div
+        class="icon-lottie"
+        ref="navClose"
+        v-show="!state.btnOpen"
+      ></div>
     </div>
     <!-- 导航栏开关 END -->
     <div class="icon-xiaohui-wrapper">
-      <img class="icon-xiaohui" src="/images/common/icon-xiaohui@2x.png" alt="xiaohui" />
-      <img src="/images/common/icon-beta.svg" alt="beta" class="icon-beta" />
+      <img
+        class="icon-xiaohui"
+        src="/images/common/icon-xiaohui@2x.png"
+        alt="xiaohui"
+      />
+      <img
+        src="/images/common/icon-beta.svg"
+        alt="beta"
+        class="icon-beta"
+      />
     </div>
 
     <!-- TODO: 如果新增工具，需要在下一行 对于activeIndex的判断里 增加新工具的索引 -->
-    <div class="btn-try" v-show="state.showBtn && [1, 2, 3, 4].includes(state.activeIndex)">
-      <router-link :to="{ hash: '#copyUrl' }" append> 免费试用 </router-link>
+    <div
+      class="btn-try"
+      v-show="state.showBtn && [1, 2, 3, 4].includes(state.activeIndex)"
+    >
+      <router-link
+        :to="{ hash: '#copyUrl' }"
+        append
+      > 免费试用 </router-link>
     </div>
   </div>
 
-  <div class="nav-list" v-show="state.showNav" @click="foldNav" @touchmove.stop="preventDefault">
+  <div
+    class="nav-list"
+    v-show="state.showNav"
+    @click="foldNav"
+    @touchmove.stop="preventDefault"
+  >
     <div class="placeholder"></div>
-    <div class="nav" v-for="(item, index) in state.list" :key="item.name" @click="clickNav(index, item.link)">
+    <div
+      class="nav"
+      v-for="(item, index) in state.list"
+      :key="item.name"
+      @click="clickNav(index, item.link)"
+    >
       <div
         :class="[state.navNameClass, 'nav-name', index == state.activeIndex ? 'nav-active' : '']"
         :style="{
@@ -38,13 +74,15 @@
   </div>
 
   <transition name="bg">
-    <div class="bg" v-show="state.showNav"></div>
+    <div
+      class="bg"
+      v-show="state.showNav"
+    ></div>
   </transition>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watch } from '@vue/runtime-core';
-import { reactive } from 'vue';
+import { defineComponent, onMounted, ref, watch, reactive } from 'vue';
 import lottie from 'lottie-web';
 import NavOpenLottie from '../../assets/lottie/navBtn/open.json';
 import NavCloseLottie from '../../assets/lottie/navBtn/close.json';
@@ -73,6 +111,7 @@ export default defineComponent({
 
     let navOpenController: any;
     let navCloseController: any;
+
     onMounted(() => {
       navOpenController = lottie.loadAnimation({
         container: navOpen.value,
@@ -81,6 +120,7 @@ export default defineComponent({
         autoplay: false,
         animationData: NavOpenLottie,
       });
+
       navCloseController = lottie.loadAnimation({
         container: navClose.value,
         renderer: 'svg',
@@ -146,7 +186,7 @@ export default defineComponent({
           opacity: 0,
         },
         {
-          bottom: -30, 
+          bottom: -30,
           opacity: 0,
         },
         {

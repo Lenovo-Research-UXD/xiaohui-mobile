@@ -39,14 +39,26 @@ const showNav = (res: boolean) => {
 <template>
   <keep-alive>
     <div id="header">
-      <Header :showBtn="state.showBtn" @showNav="showNav"></Header>
+      <Header
+        :showBtn="state.showBtn"
+        @showNav="showNav"
+      ></Header>
     </div>
   </keep-alive>
-  <div class="placeholder" ref="placeholder"></div>
-  <div class="observer" ref="observer"></div>
+  <div
+    class="placeholder"
+    ref="placeholder"
+  ></div>
+  <div
+    class="observer"
+    ref="observer"
+  ></div>
 
   <transition name="blur">
-    <div v-show="state.showNav" class="blur-layer"></div>
+    <div
+      v-show="state.showNav"
+      class="blur-layer"
+    ></div>
   </transition>
 
   <div class="content">

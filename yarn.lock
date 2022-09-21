@@ -150,7 +150,14 @@
   "resolved" "https://registry.npmjs.org/@vue/devtools-api/-/devtools-api-6.0.0-beta.19.tgz"
   "version" "6.0.0-beta.19"
 
-"@vue/reactivity@^3.2.19", "@vue/reactivity@3.2.20":
+"@vue/reactivity@^3.2.19", "@vue/reactivity@3.2.39":
+  "integrity" "sha512-vlaYX2a3qMhIZfrw3Mtfd+BuU+TZmvDrPMa+6lpfzS9k/LnGxkSuf0fhkP0rMGfiOHPtyKoU9OJJJFGm92beVQ=="
+  "resolved" "https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.2.39.tgz"
+  "version" "3.2.39"
+  dependencies:
+    "@vue/shared" "3.2.39"
+
+"@vue/reactivity@3.2.20":
   "integrity" "sha512-nSmoLojUTk+H8HNTAkrUduB4+yIUBK2HPihJo2uXVSH4Spry6oqN6lFzE5zpLK+F27Sja+UqR9R1+/kIOsHV5w=="
   "resolved" "https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.2.20.tgz"
   "version" "3.2.20"
@@ -167,6 +174,14 @@
     "@vue/shared" "3.2.20"
     "estree-walker" "^2.0.2"
     "magic-string" "^0.25.7"
+
+"@vue/runtime-core@^3.2.21":
+  "integrity" "sha512-xKH5XP57JW5JW+8ZG1khBbuLakINTgPuINKL01hStWLTTGFOrM49UfCFXBcFvWmSbci3gmJyLl2EAzCaZWsx8g=="
+  "resolved" "https://registry.npmjs.org/@vue/runtime-core/-/runtime-core-3.2.39.tgz"
+  "version" "3.2.39"
+  dependencies:
+    "@vue/reactivity" "3.2.39"
+    "@vue/shared" "3.2.39"
 
 "@vue/runtime-core@3.2.20":
   "integrity" "sha512-d1xfUGhZPfiZzAN7SatStD4vRtT8deJSXib2+Cz3x0brjMWKxe32asQc154FF1E2fFgMCHtnfd4A90bQEzV4GQ=="
@@ -197,6 +212,11 @@
   "integrity" "sha512-FbpX+hD5BvXCQerEYO7jtAGHlhAkhTQ4KIV73kmLWNlawWhTiVuQxizgVb0BOkX5oG9cIRZ42EG++d/k/Efp0w=="
   "resolved" "https://registry.npmjs.org/@vue/shared/-/shared-3.2.20.tgz"
   "version" "3.2.20"
+
+"@vue/shared@3.2.39":
+  "integrity" "sha512-D3dl2ZB9qE6mTuWPk9RlhDeP1dgNRUKC3NJxji74A4yL8M2MwlhLKUC/49WHjrNzSPug58fWx/yFbaTzGAQSBw=="
+  "resolved" "https://registry.npmjs.org/@vue/shared/-/shared-3.2.39.tgz"
+  "version" "3.2.39"
 
 "acorn@^7.1.1":
   "integrity" "sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A=="
@@ -371,9 +391,9 @@
   "resolved" "https://registry.npmjs.org/entities/-/entities-2.2.0.tgz"
   "version" "2.2.0"
 
-"esbuild-darwin-64@0.13.8":
-  "integrity" "sha512-b6sdiT84zV5LVaoF+UoMVGJzR/iE2vNUfUDfFQGrm4LBwM/PWXweKpuu6RD9mcyCq18cLxkP6w/LD/w9DtX3ng=="
-  "resolved" "https://registry.npmjs.org/esbuild-darwin-64/-/esbuild-darwin-64-0.13.8.tgz"
+"esbuild-windows-64@0.13.8":
+  "integrity" "sha512-76Fb57B9eE/JmJi1QmUW0tRLQZfGo0it+JeYoCDTSlbTn7LV44ecOHIMJSSgZADUtRMWT9z0Kz186bnaB3amSg=="
+  "resolved" "https://registry.npmjs.org/esbuild-windows-64/-/esbuild-windows-64-0.13.8.tgz"
   "version" "0.13.8"
 
 "esbuild@^0.13.2":
