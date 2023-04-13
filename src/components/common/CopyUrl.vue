@@ -3,7 +3,7 @@
     <img src="/images/common/icon-web-pc.svg" alt="web-pc" class="icon-web-pc" />
     <div class="content">
       <p>{{ msg }}，请在电脑端访问</p>
-      <p>xiaohui.ai</p>
+      <p>xiaohui.lenovo.com</p>
     </div>
     <div class="btn-copyurl" @click="copyUrl">复制链接</div>
   </div>
@@ -23,12 +23,12 @@ export default defineComponent({
   setup() {
     const copyUrl = async function () {
       const clipboardObj = navigator.clipboard;
-      const url = 'xiaohui.ai';
+      const url = 'xiaohui.lenovo.com';
       if (clipboardObj) {
         await clipboardObj.writeText(url);
         alert('链接已复制');
       } else {
-        alert('该浏览器不支持剪切板操作，请手动复制xiaohui.ai');
+        alert('该浏览器不支持剪切板操作，请手动复制xiaohui.lenovo.com');
       }
     };
     return {

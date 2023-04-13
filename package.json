@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy": "npm run build && scp -r ./mobile shenzy6@10.120.17.30:/home/shenzy6",
+    "deploy": "npm run build && scp -r  ./mobile uxd@10.110.146.100:/home/uxd",
     "serve": "vite preview"
   },
   "dependencies": {
